@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bjh814070bo20"]
+
+[ext_resource type="Script" uid="uid://bd8txtib7ntxd" path="res://goobertie/components/gravity_component.gd" id="1_8kk7m"]
+
+[node name="GravityComponent" type="Node" unique_id=2008437012]
+script = ExtResource("1_8kk7m")

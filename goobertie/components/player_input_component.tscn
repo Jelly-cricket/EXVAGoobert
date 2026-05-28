@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c8dkqyy28xcsn"]
+
+[ext_resource type="Script" uid="uid://ns5r4ki3uq42" path="res://goobertie/components/player_input_component.gd" id="1_g1w2u"]
+
+[node name="PlayerInputComponent" type="Node" unique_id=1805821591]
+script = ExtResource("1_g1w2u")

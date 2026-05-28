@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cykui7lnn6qgg"]
+
+[ext_resource type="Script" uid="uid://d0fi8j1gg8dyu" path="res://goobertie/components/jump_component.gd" id="1_87krr"]
+
+[node name="BounceComponent" type="Node" unique_id=1642074996]
+script = ExtResource("1_87krr")

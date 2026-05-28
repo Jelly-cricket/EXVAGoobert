@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d30ynkegtwqj0"]
+
+[ext_resource type="Script" uid="uid://dmhgebqknah5m" path="res://goobertie/components/locomotion_component.gd" id="1_tnygs"]
+
+[node name="LocomotionComponent" type="Node" unique_id=2087060992]
+script = ExtResource("1_tnygs")
