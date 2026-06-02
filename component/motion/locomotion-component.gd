@@ -1,9 +1,9 @@
-extends Node
+extends Component
 class_name LocoCo
 @export_category("References")
 @export var body : CharacterBody3D
 @export var input : InputCo
-@export_category("Speeds")
+@export_category("Base Speeds")
 @export var base_ground_speed : float = 7.8
 @export var base_air_speed : float = 3.2
 @export var base_ground_accel : float = 14.6
@@ -14,6 +14,40 @@ class_name LocoCo
 
 var wish_dir : Vector3
 var wish_vel : Vector3
+
+#region Acting declarations and helpers
+@onready var acting_ground_speed : float = base_ground_speed
+@onready var acting_air_speed : float = base_air_speed
+
+func reset_ground_speed() -> bool: ## Returns true if it was already matching, false otherwise.
+	var same = acting_ground_speed == base_ground_speed
+	acting_ground_speed = base_ground_speed
+	return same
+func reset_air_speed() -> bool: ## Returns true if it was already matching, false otherwise.
+	var same = acting_air_speed == base_air_speed
+	acting_air_speed = base_air_speed
+	return same
+
+@onready var acting_ground_accel : float = base_ground_accel
+@onready var acting_air_accel : float = base_air_accel
+
+func reset_ground_accel() -> bool: ## Returns true if it was already matching, false otherwise.
+	var same = acting_ground_accel == base_ground_accel
+	acting_ground_accel = base_ground_accel
+	return same
+func reset_air_accel() -> bool: ## Returns true if it was already matching, false otherwise.
+	var same = acting_air_accel == base_air_accel
+	acting_air_accel = base_air_accel
+	return same
+
+@onready var acting_frict : float = base_frict
+
+func reset_frict() -> bool: ## Returns true if it was already matching, false otherwise.
+	var same = acting_frict == base_frict
+	acting_frict = base_frict
+	return same
+	
+#endregion
 
 func _physics_process(delta : float) -> void:
 	_find_wishes()

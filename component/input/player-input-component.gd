@@ -6,4 +6,12 @@ func get_dir() -> Vector3:
 	return Vector3(plain.y,0,plain.x)
 
 func get_bounce() -> bool:
-	return Input.is_action_just_pressed(&"move_bounce")
+	return Input.is_action_pressed(&"move_bounce")
+
+func get_fire() -> bool:
+	return Input.is_action_pressed(&"item_fire")
+
+func get_utility() -> bool:
+	return Input.is_action_pressed(&"item_utility")
+	
+	

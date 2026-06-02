@@ -1,4 +1,4 @@
-extends Node
+extends Component
 class_name InputCo
 
 func get_dir() -> Vector3:

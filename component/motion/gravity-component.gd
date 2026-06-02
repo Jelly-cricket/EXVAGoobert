@@ -1,4 +1,4 @@
-extends Node
+extends Component
 class_name GravityCo
 
 @export var body : CharacterBody3D

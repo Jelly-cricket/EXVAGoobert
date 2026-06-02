@@ -1,0 +1,2 @@
+extends OutfitItem
+class_name HeadItem

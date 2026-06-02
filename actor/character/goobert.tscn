@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://b6awjbwfeven7"]
 
-[ext_resource type="PackedScene" uid="uid://d30ynkegtwqj0" path="res://goobertie/components/locomotion_component.tscn" id="1_ac5cv"]
-[ext_resource type="Script" uid="uid://bosbgse8bbbco" path="res://goobertie/camera_controller.gd" id="1_k3i4l"]
-[ext_resource type="PackedScene" uid="uid://c8dkqyy28xcsn" path="res://goobertie/components/player_input_component.tscn" id="2_k3i4l"]
-[ext_resource type="PackedScene" uid="uid://cykui7lnn6qgg" path="res://goobertie/components/JumpComponent.tscn" id="2_rblbq"]
-[ext_resource type="PackedScene" uid="uid://bjh814070bo20" path="res://goobertie/components/gravity_component.tscn" id="5_238ji"]
+[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://common/too-close-hider.tres" id="1_4e8vj"]
+[ext_resource type="PackedScene" uid="uid://d30ynkegtwqj0" path="res://component/motion/locomotion-component.tscn" id="1_ac5cv"]
+[ext_resource type="Script" uid="uid://bosbgse8bbbco" path="res://actor/character/camera-controller.gd" id="1_k3i4l"]
+[ext_resource type="PackedScene" uid="uid://c8dkqyy28xcsn" path="res://component/input/player-input-component.tscn" id="2_k3i4l"]
+[ext_resource type="PackedScene" uid="uid://cykui7lnn6qgg" path="res://component/motion/jump-component.tscn" id="2_rblbq"]
+[ext_resource type="PackedScene" uid="uid://bjh814070bo20" path="res://component/motion/gravity-component.tscn" id="5_238ji"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3i4l"]
-distance_fade_mode = 2
-distance_fade_max_distance = 2.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u0dx0"]
 radial_segments = 8
@@ -31,26 +28,28 @@ collision_layer = 2
 shape = SubResource("CapsuleShape3D_24okm")
 
 [node name="VisBox" type="MeshInstance3D" parent="." unique_id=1951467864]
-material_override = SubResource("StandardMaterial3D_k3i4l")
+material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CapsuleMesh_u0dx0")
 
 [node name="CameraFocus" type="Marker3D" parent="." unique_id=1623724240 node_paths=PackedStringArray("body", "camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 script = ExtResource("1_k3i4l")
 body = NodePath("..")
 camera = NodePath(".")
-camera_vertical_bound_down = -50.0
+camera_vertical_bound_down = -65.0
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraFocus" unique_id=1070161049]
 spring_length = 4.0
+margin = 0.05
 
 [node name="Viewpoint" type="Camera3D" parent="CameraFocus/SpringArm3D" unique_id=457187770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 4)
 fov = 85.0
 near = 0.1
 
 [node name="Weapon" type="MeshInstance3D" parent="CameraFocus" unique_id=579117651]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.5, -0.9)
+material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CylinderMesh_k3i4l")
 
 [node name="Components" type="Node" parent="." unique_id=1660861480]
@@ -58,6 +57,7 @@ mesh = SubResource("CylinderMesh_k3i4l")
 [node name="BounceComponent" parent="Components" unique_id=1642074996 node_paths=PackedStringArray("input", "body") instance=ExtResource("2_rblbq")]
 input = NodePath("../PlayerInputComponent")
 body = NodePath("../..")
+jump_buffer_amount = 0.14
 
 [node name="LocomotionComponent" parent="Components" unique_id=2087060992 node_paths=PackedStringArray("body", "input") instance=ExtResource("1_ac5cv")]
 body = NodePath("../..")
