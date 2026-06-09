@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8dkqyy28xcsn"]
 
-[ext_resource type="Script" uid="uid://ns5r4ki3uq42" path="res://component/input/player-input-component.gd" id="1_g1w2u"]
+[ext_resource type="Script" uid="uid://c5wyg7ysk6q3" path="res://component/input/PlayerInputComponent.cs" id="1_hleta"]
 
 [node name="PlayerInputComponent" type="Node" unique_id=1805821591]
-script = ExtResource("1_g1w2u")
+script = ExtResource("1_hleta")

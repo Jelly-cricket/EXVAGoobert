@@ -54,18 +54,15 @@ mesh = SubResource("CylinderMesh_k3i4l")
 
 [node name="Components" type="Node" parent="." unique_id=1660861480]
 
-[node name="BounceComponent" parent="Components" unique_id=1642074996 node_paths=PackedStringArray("input", "body") instance=ExtResource("2_rblbq")]
-input = NodePath("../PlayerInputComponent")
-body = NodePath("../..")
-jump_buffer_amount = 0.14
-
-[node name="LocomotionComponent" parent="Components" unique_id=2087060992 node_paths=PackedStringArray("body", "input") instance=ExtResource("1_ac5cv")]
-body = NodePath("../..")
-input = NodePath("../PlayerInputComponent")
-base_ground_accel = 9.6
-base_frict = 11.4
-
 [node name="PlayerInputComponent" parent="Components" unique_id=1805821591 instance=ExtResource("2_k3i4l")]
 
-[node name="GravityComponent" parent="Components" unique_id=2008437012 node_paths=PackedStringArray("body") instance=ExtResource("5_238ji")]
-body = NodePath("../..")
+[node name="LocomotionComponent" parent="Components" unique_id=2087060992 node_paths=PackedStringArray("Body", "Input") instance=ExtResource("1_ac5cv")]
+Body = NodePath("../..")
+Input = NodePath("../PlayerInputComponent")
+
+[node name="GravityComponent" parent="Components" unique_id=2008437012 node_paths=PackedStringArray("Body") instance=ExtResource("5_238ji")]
+Body = NodePath("../..")
+
+[node name="JumpComponent" parent="Components" unique_id=1642074996 node_paths=PackedStringArray("Body", "Input") instance=ExtResource("2_rblbq")]
+Body = NodePath("../..")
+Input = NodePath("../PlayerInputComponent")

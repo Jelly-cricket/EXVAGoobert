@@ -5,3 +5,4 @@ class_name ItemRun
 @export var input : InputCo
 
 func _physics_process(delta: float) -> void:
+	pass
