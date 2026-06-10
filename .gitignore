@@ -4,3 +4,4 @@
 # Visual Studio ignores
 .vs/
 EXVAGoobert.csproj.user
+obj/
