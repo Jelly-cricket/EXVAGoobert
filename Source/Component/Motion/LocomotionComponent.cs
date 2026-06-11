@@ -1,18 +1,20 @@
 using Godot;
 using System.ComponentModel;
+namespace EXVAG.Component.Motion;
 
-public partial class LocomotionComponent : Component
+[GlobalClass]
+public partial class LocomotionComponent : BaseComponent
 {
     [ExportCategory("References")]
-    [Export] public CharacterBody3D Body { get; set; }
-    [Export] public InputComponent Input { get; set; }
+    [Export] public CharacterBody3D Body { get; private set; }
+    [Export] public Input.InputComponent Input { get; private set; }
 
     [ExportCategory("Base Speeds")]
-    [Export] public float BaseGroundSpeed { get; set; } = 7.8f;
-    [Export] public float BaseAirSpeed { get; set; } = 3.2f;
-    [Export] public float BaseGroundAccel { get; set; } = 14.6f;
-    [Export] public float BaseAirAccel { get; set; } = 1.4f;
-    [Export] public float BaseFriction { get; set; } = 22.4f;
+    [Export] public float BaseGroundSpeed { get; private set; } = 7.8f;
+    [Export] public float BaseAirSpeed { get; private set; } = 3.2f;
+    [Export] public float BaseGroundAccel { get; private set; } = 14.6f;
+    [Export] public float BaseAirAccel { get; private set; } = 1.4f;
+    [Export] public float BaseFriction { get; private set; } = 22.4f;
 
     private Vector3 _worldGravity;
 
@@ -58,7 +60,7 @@ public partial class LocomotionComponent : Component
 
     private void FindWishes()
     {
-        Vector3 localInput = Input.GetDir();
+        Vector3 localInput = Input.MoveWishDir;
 
         _wishDir = (
             Body.GlobalTransform.Basis.X * localInput.X +

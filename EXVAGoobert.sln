@@ -1,12 +1,15 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EXVAGoobert", "EXVAGoobert.csproj", "{8E001454-D2D4-4F44-B79F-37440A25675C}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EXVAG", "EXVAG.csproj", "{8E001454-D2D4-4F44-B79F-37440A25675C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-	Debug|Any CPU = Debug|Any CPU
-	ExportDebug|Any CPU = ExportDebug|Any CPU
-	ExportRelease|Any CPU = ExportRelease|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8E001454-D2D4-4F44-B79F-37440A25675C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -15,5 +18,11 @@ Global
 		{8E001454-D2D4-4F44-B79F-37440A25675C}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{8E001454-D2D4-4F44-B79F-37440A25675C}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{8E001454-D2D4-4F44-B79F-37440A25675C}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30B2BEA7-E733-4E3E-ABF9-DD95A712E54B}
 	EndGlobalSection
 EndGlobal

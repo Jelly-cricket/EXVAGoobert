@@ -2,10 +2,11 @@
 
 [ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://common/too-close-hider.tres" id="1_4e8vj"]
 [ext_resource type="PackedScene" uid="uid://d30ynkegtwqj0" path="res://component/motion/locomotion-component.tscn" id="1_ac5cv"]
-[ext_resource type="Script" uid="uid://bosbgse8bbbco" path="res://actor/character/camera-controller.gd" id="1_k3i4l"]
 [ext_resource type="PackedScene" uid="uid://c8dkqyy28xcsn" path="res://component/input/player-input-component.tscn" id="2_k3i4l"]
 [ext_resource type="PackedScene" uid="uid://cykui7lnn6qgg" path="res://component/motion/jump-component.tscn" id="2_rblbq"]
 [ext_resource type="PackedScene" uid="uid://bjh814070bo20" path="res://component/motion/gravity-component.tscn" id="5_238ji"]
+[ext_resource type="PackedScene" uid="uid://c3qavv5vrvawp" path="res://component/input/camera-controller-component.tscn" id="6_4e8vj"]
+[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://actor/character/fps.gd" id="7_oafcr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
 
@@ -31,12 +32,9 @@ shape = SubResource("CapsuleShape3D_24okm")
 material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CapsuleMesh_u0dx0")
 
-[node name="CameraFocus" type="Marker3D" parent="." unique_id=1623724240 node_paths=PackedStringArray("body", "camera")]
+[node name="CameraFocus" type="Marker3D" parent="." unique_id=1623724240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-script = ExtResource("1_k3i4l")
-body = NodePath("..")
-camera = NodePath(".")
-camera_vertical_bound_down = -65.0
+gizmo_extents = 2.0
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraFocus" unique_id=1070161049]
 spring_length = 4.0
@@ -66,3 +64,12 @@ Body = NodePath("../..")
 [node name="JumpComponent" parent="Components" unique_id=1642074996 node_paths=PackedStringArray("Body", "Input") instance=ExtResource("2_rblbq")]
 Body = NodePath("../..")
 Input = NodePath("../PlayerInputComponent")
+
+[node name="CameraControllerComponent" parent="Components" unique_id=1204759029 node_paths=PackedStringArray("Body", "Pivot") instance=ExtResource("6_4e8vj")]
+Body = NodePath("../..")
+Pivot = NodePath("../../CameraFocus")
+
+[node name="Label" type="Label" parent="." unique_id=372353809]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("7_oafcr")

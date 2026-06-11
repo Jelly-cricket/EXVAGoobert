@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d30ynkegtwqj0"]
 
-[ext_resource type="Script" uid="uid://b8ycnqfwwwshv" path="res://component/motion/LocomotionComponent.cs" id="1_h78ui"]
+[ext_resource type="Script" uid="uid://b8ycnqfwwwshv" path="res://Source/Component/Motion/LocomotionComponent.cs" id="1_h78ui"]
 
 [node name="LocomotionComponent" type="Node" unique_id=2087060992]
 script = ExtResource("1_h78ui")

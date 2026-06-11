@@ -1,18 +1,22 @@
 using Godot;
 using System;
 using System.Runtime.CompilerServices;
+namespace EXVAG.Component.Motion;
 
-public partial class JumpComponent : Component
+[GlobalClass]
+public partial class JumpComponent : BaseComponent
 {
 	[ExportCategory("References")]
-	[Export] public CharacterBody3D Body { get; set; }
-	[Export] public InputComponent Input { get; set; }
+	[Export] public CharacterBody3D Body { get; private set; }
+	[Export] public Input.InputComponent Input { get; private set; }
 
 	[ExportCategory("Ability")]
-	[Export] public float JumpPower { get; set; } = 6.4f;
-	[Export] public double JumpCooldownDuration { get; set; } = 0.3;
-	[Export] public double CoyoteDuration { get; set; } = 0.17;
-	[Export] public double JumpBufferDuration { get; set; } = 0.34;
+	[Export] public float JumpPower { get; private set; } = 6.4f;
+	[Export] public double JumpCooldownDuration { get; private set; } = 0.3;
+	[Export] public double CoyoteDuration { get; private set; } = 0.17;
+	[Export] public double JumpBufferDuration { get; private set; } = 0.34;
+
+	public bool CanJump => _jumpCooldownTimer == 0 && _coyoteTimer > 0 && _jumpBufferTimer > 0;
 
 	private double _jumpCooldownTimer = 0;
 	private double _coyoteTimer = 0;
@@ -22,8 +26,22 @@ public partial class JumpComponent : Component
 	{
 		TickTimers(delta);
 		RefreshCoyote();
-		CheckInputWantsJump();
+		CheckQueueJump();
 		TryJump();
+	}
+	private void CheckQueueJump()
+	{
+		if (Input.Bounce)
+		{
+			_jumpBufferTimer = JumpBufferDuration;
+		}
+	}
+	private void TryJump()
+	{
+		if (CanJump)
+		{
+			JumpImpulse();
+		}
 	}
 	private void TickTimers(double delta)
 	{
@@ -40,29 +58,8 @@ public partial class JumpComponent : Component
 			_jumpBufferTimer - delta
 		);
 	}
-	private void CheckInputWantsJump()
-	{
-		if (Input.GetBounce())
-		{
-			_jumpBufferTimer = JumpBufferDuration;
-		}
-	}
-	public void TryJump()
-	{
-		if (_jumpCooldownTimer > 0)
-		{
-			return;
-		}
-		if (_coyoteTimer < 0)
-		{
-			return;
-		}
-		if (_jumpBufferTimer > 0)
-		{
-			DoJump();
-		}
-	}
-	private void DoJump()
+
+	private void JumpImpulse()
 {
     _jumpBufferTimer = 0;
     _jumpCooldownTimer = JumpCooldownDuration;
