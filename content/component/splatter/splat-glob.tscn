@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bhdrx23282c2u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmvww"]
+metallic = 1.0
+metallic_specular = 1.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.61
+distance_fade_mode = 2
+distance_fade_min_distance = 0.2
+distance_fade_max_distance = 0.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_p5428"]
+material = SubResource("StandardMaterial3D_rmvww")
+radius = 0.25
+height = 0.5
+radial_segments = 4
+rings = 4
+
+[node name="SplatGlob" type="Node3D" unique_id=776773926]
+
+[node name="GlobMeshInstance3D" type="MeshInstance3D" parent="." unique_id=246041276]
+mesh = SubResource("SphereMesh_p5428")

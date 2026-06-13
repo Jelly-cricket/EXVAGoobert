@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bseieahfruiqe"]
 
 [ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://block.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://actor/character/goobert.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://content/actor/character/player-character.tscn" id="2_vonw3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vonw3"]
 sky_top_color = Color(0.25432009, 0.45346308, 0.7108433, 1)

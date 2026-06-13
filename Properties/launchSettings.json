@@ -1,7 +1,7 @@
 {
   "profiles": {
-    "EXVAG": {
-      "commandName": "Project"
-    }
+	"EXVAG": {
+	  "commandName": "Project"
+	}
   }
 }

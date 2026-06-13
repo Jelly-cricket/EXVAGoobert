@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dhh32do3pojo2"]
+
+[ext_resource type="PackedScene" uid="uid://cv4g3ig7ae4pj" path="res://content/level/arena/lv-arena.blend" id="1_um34h"]
+
+[node name="TestArena" type="Node3D" unique_id=21197161]
+
+[node name="lv-arena" parent="." unique_id=894904938 instance=ExtResource("1_um34h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.7667618, -3.4981308)

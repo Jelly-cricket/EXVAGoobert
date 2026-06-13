@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://b6awjbwfeven7"]
 
-[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://common/too-close-hider.tres" id="1_4e8vj"]
-[ext_resource type="PackedScene" uid="uid://d30ynkegtwqj0" path="res://component/motion/locomotion-component.tscn" id="1_ac5cv"]
-[ext_resource type="PackedScene" uid="uid://c8dkqyy28xcsn" path="res://component/input/player-input-component.tscn" id="2_k3i4l"]
-[ext_resource type="PackedScene" uid="uid://cykui7lnn6qgg" path="res://component/motion/jump-component.tscn" id="2_rblbq"]
-[ext_resource type="PackedScene" uid="uid://bjh814070bo20" path="res://component/motion/gravity-component.tscn" id="5_238ji"]
-[ext_resource type="PackedScene" uid="uid://c3qavv5vrvawp" path="res://component/input/camera-controller-component.tscn" id="6_4e8vj"]
-[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://actor/character/fps.gd" id="7_oafcr"]
+[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://content/common/too-close-hider.tres" id="1_4e8vj"]
+[ext_resource type="PackedScene" uid="uid://d30ynkegtwqj0" path="res://content/component/motion/locomotion-component.tscn" id="1_ac5cv"]
+[ext_resource type="PackedScene" uid="uid://c8dkqyy28xcsn" path="res://content/component/input/player-input-component.tscn" id="2_k3i4l"]
+[ext_resource type="PackedScene" uid="uid://cykui7lnn6qgg" path="res://content/component/motion/jump-component.tscn" id="2_rblbq"]
+[ext_resource type="PackedScene" uid="uid://d2rj5hq5ygwn8" path="res://content/component/stat/life-stat.tscn" id="3_d4p6r"]
+[ext_resource type="PackedScene" uid="uid://bcv2yrvueducf" path="res://content/component/stat/mana-stat.tscn" id="4_mpsw7"]
+[ext_resource type="PackedScene" uid="uid://bjh814070bo20" path="res://content/component/motion/gravity-component.tscn" id="5_238ji"]
+[ext_resource type="PackedScene" uid="uid://c3qavv5vrvawp" path="res://content/component/input/camera-controller-component.tscn" id="6_4e8vj"]
+[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://content/actor/character/fps.gd" id="7_oafcr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
 
@@ -32,6 +34,11 @@ shape = SubResource("CapsuleShape3D_24okm")
 material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CapsuleMesh_u0dx0")
 
+[node name="Weapon" type="MeshInstance3D" parent="." unique_id=579117651]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.39999998, -0.9)
+material_override = ExtResource("1_4e8vj")
+mesh = SubResource("CylinderMesh_k3i4l")
+
 [node name="CameraFocus" type="Marker3D" parent="." unique_id=1623724240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 gizmo_extents = 2.0
@@ -45,14 +52,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 4)
 fov = 85.0
 near = 0.1
 
-[node name="Weapon" type="MeshInstance3D" parent="CameraFocus" unique_id=579117651]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.5, -0.9)
-material_override = ExtResource("1_4e8vj")
-mesh = SubResource("CylinderMesh_k3i4l")
-
 [node name="Components" type="Node" parent="." unique_id=1660861480]
 
 [node name="PlayerInputComponent" parent="Components" unique_id=1805821591 instance=ExtResource("2_k3i4l")]
+
+[node name="LifeStat" parent="Components" unique_id=1067196011 instance=ExtResource("3_d4p6r")]
+
+[node name="SpecialManaStat" parent="Components" unique_id=255801808 instance=ExtResource("4_mpsw7")]
+RegenRate = 3.6
+
+[node name="SuperManaStat" parent="Components" unique_id=1375360832 instance=ExtResource("4_mpsw7")]
+StartAmount = 0.0
 
 [node name="LocomotionComponent" parent="Components" unique_id=2087060992 node_paths=PackedStringArray("Body", "Input") instance=ExtResource("1_ac5cv")]
 Body = NodePath("../..")

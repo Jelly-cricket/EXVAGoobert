@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bcv2yrvueducf"]
+
+[ext_resource type="Script" uid="uid://7aib1hqp12b0" path="res://Source/Component/Stat/BaseStat.cs" id="1_x21dx"]
+
+[node name="ManaStat" type="Node" unique_id=255801808]
+script = ExtResource("1_x21dx")
+StartAmount = 20.0
+RegenerateFromEmpty = true
+RegenDelay = 0.0
+RegenRate = 1.115
+MinBounce = 0.0
+metadata/_custom_type_script = "uid://7aib1hqp12b0"
