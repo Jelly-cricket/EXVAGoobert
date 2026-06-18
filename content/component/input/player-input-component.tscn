@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c8dkqyy28xcsn"]
-
-[ext_resource type="Script" uid="uid://c5wyg7ysk6q3" path="res://Source/Component/Input/PlayerInputComponent.cs" id="1_hleta"]
-
-[node name="PlayerInputComponent" type="Node" unique_id=1805821591]
-script = ExtResource("1_hleta")

@@ -7,7 +7,7 @@ public partial class LocomotionComponent : BaseComponent
 {
 	[ExportCategory("References")]
 	[Export] public CharacterBody3D Body { get; private set; }
-	[Export] public Input.InputComponent Input { get; private set; }
+	[Export] public Input.CharacterInputStream InputStream { get; private set; }
 
 	[ExportCategory("Base Speeds")]
 	[Export] public float BaseGroundSpeed { get; private set; } = 7.8f;
@@ -60,7 +60,7 @@ public partial class LocomotionComponent : BaseComponent
 
 	private void FindWishes()
 	{
-		Vector3 localInput = Input.MoveWishDir;
+		Vector3 localInput = InputStream.MoveWishDir;
 
 		_wishDir = (
 			Body.GlobalTransform.Basis.X * localInput.X +
