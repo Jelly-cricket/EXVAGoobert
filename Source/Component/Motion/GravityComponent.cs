@@ -7,13 +7,16 @@ public partial class GravityComponent : BaseComponent
 {
 	[ExportCategory("References")]
 	[Export] public CharacterBody3D Body { get; private set; }
-	[ExportCategory("Gravity")]
-	[Export] public Vector3 GravityDirection { get; private set; } = Vector3.Down;
-	[Export] public float GravityStrength { get; private set; } = 9.81f;
 
+	private Vector3 _gravity;
+
+	public override void _Ready()
+	{
+		_gravity = Body.GetGravity();
+	}
 	public override void _PhysicsProcess(double delta)
 	{
-		Body.Velocity += (GravityDirection * GravityStrength)
+		Body.Velocity += _gravity
 			* (float)delta;
 	}
 }

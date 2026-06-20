@@ -1,21 +1,46 @@
+using EXVAG.Source.Component.Item;
 using Godot;
 using System;
 
 namespace EXVAG.Weapon;
 public partial class BlasterWeapon : WeaponRoot
 {
-	[Export] float AmmoConsumption { get; set; }
-	[Export] PackedScene ProjectileScene { get; set; }
+	[Export] public float AmmoConsumption { get; set; }
+	[Export] public PackedScene ProjectileScene { get; set; }
 
-	
-	public override void PrimaryFirePressed()
+
+	public override void OnPrimaryFirePressed()
 	{
-		// pew pew
+		
 	}
-	public virtual void FireProjectile(Vector3 direction)
+	public override void OnPrimaryFireReleased() 
 	{
-		var projectile = ProjectileScene.Instantiate<WeaponDischarge>();
-		GetTree().CurrentScene.AddChild(projectile);
+
+	}
+	public override void OnUtilityFirePressed()
+	{
+		
+	}
+	public override void OnUtilityFireReleased()
+	{
+		
+	}
+	public virtual void TriggerPrimaryFire()
+	{
+		
+	}
+	public virtual void SpawnProjectile(Vector3 direction)
+	{
+		var projectile = ProjectileScene.Instantiate();
+		GetTree().Root.AddChild(projectile);
+		if (projectile is Node3D)
+		{
+			((Node3D)projectile).Rotation = direction;
+		}
+		else
+		{
+			GD.Print("Error: Projectile scene is not 3D!");
+		}
 	}
 
 }

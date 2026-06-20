@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bseieahfruiqe"]
 
-[ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://block.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://content/actor/character/player-character.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://content/block.tscn" id="1_ty75i"]
+[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://content/actor/character/player-character.tscn" id="2_x8b6q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vonw3"]
 sky_top_color = Color(0.25432009, 0.45346308, 0.7108433, 1)
@@ -20,16 +20,19 @@ sky = SubResource("Sky_oi3di")
 
 [node name="level" type="Node3D" unique_id=1257037458]
 
-[node name="Block" parent="." unique_id=677878415 instance=ExtResource("1_u52ul")]
+[node name="Block" parent="." unique_id=677878415 instance=ExtResource("1_ty75i")]
 transform = Transform3D(22.987898, 0, 0, 0, 0.31463447, 0, 0, 0, 25.620512, 0, 0, 0)
 
-[node name="block" parent="." unique_id=1078901755 instance=ExtResource("1_u52ul")]
+[node name="block" parent="." unique_id=1078901755 instance=ExtResource("1_ty75i")]
 transform = Transform3D(1, 0, 0, 0, 0.2738031, 0, 0, 0, 1, 3.1105237, 0.6573167, 0.13313699)
 
-[node name="block2" parent="." unique_id=679568168 instance=ExtResource("1_u52ul")]
+[node name="block3" parent="." unique_id=1435114744 instance=ExtResource("1_ty75i")]
+transform = Transform3D(1, 0, 0, 0, 0.2738031, 0, 0, 0, 1, 1.8949423, 0.6573167, 0.85034144)
+
+[node name="block2" parent="." unique_id=679568168 instance=ExtResource("1_ty75i")]
 transform = Transform3D(1.747926, 0, 0, 0, 0.2738031, 0, 0, 0, 0.61132133, 4.534872, 0.6573167, -0.08137654)
 
-[node name="Goobert" parent="." unique_id=1585261278 instance=ExtResource("2_vonw3")]
+[node name="Goobert" parent="." unique_id=1585261278 instance=ExtResource("2_x8b6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3553119, 1.1573172, 1.6707842)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=293485306]

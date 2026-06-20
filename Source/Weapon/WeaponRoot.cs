@@ -1,25 +1,36 @@
+using EXVAG.Component.Input;
+using EXVAG.Component.Stat;
 using Godot;
-using System;
 
 namespace EXVAG.Weapon;
 public abstract partial class WeaponRoot : Node3D
 {
-	[Export] public Component.Input.PlayerInputSignals InputSource { get; set; }
-	[Export] public Component.Stat.BaseStat AmmoSource { get; set; }
-
-	public void ConnectSignals()
+	public CharacterInputSignals InputSource { get; set; }
+	public BaseStat AmmoSource { get; set; }
+	public void ConnectActionSignals()
 	{
 		InputSource.ItemFirePressed += OnPrimaryFirePressed;
 		InputSource.ItemFireReleased += OnPrimaryFireReleased;
 		InputSource.ItemUtilityPressed += OnUtilityFirePressed;
 		InputSource.ItemUtilityReleased += OnUtilityFireReleased;
 	}
-	public void DetachSignals()
+	public void DetachActionSignals()
 	{
 		InputSource.ItemFirePressed -= OnPrimaryFirePressed;
 		InputSource.ItemFireReleased -= OnPrimaryFireReleased;
 		InputSource.ItemUtilityPressed -= OnUtilityFirePressed;
 		InputSource.ItemUtilityReleased -= OnUtilityFireReleased;
+	}
+
+	public void EquipTo(CharacterInputSignals input,BaseStat ammo)
+	{
+		InputSource = input;
+		AmmoSource = ammo;
+		ConnectActionSignals();
+	}
+	public override void _ExitTree()
+	{
+		DetachActionSignals();
 	}
 
 	public abstract void OnPrimaryFirePressed();

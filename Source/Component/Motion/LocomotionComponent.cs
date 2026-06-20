@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.ComponentModel;
 namespace EXVAG.Component.Motion;
 
@@ -16,8 +17,6 @@ public partial class LocomotionComponent : BaseComponent
 	[Export] public float BaseAirAccel { get; private set; } = 1.4f;
 	[Export] public float BaseFriction { get; private set; } = 22.4f;
 
-	private Vector3 _worldGravity;
-
 	private Vector3 _wishDir;
 	private Vector3 _wishVel;
 
@@ -31,7 +30,6 @@ public partial class LocomotionComponent : BaseComponent
 
 	public override void _Ready()
 	{
-		_worldGravity = Body.GetGravity();
 
 		ActingGroundSpeed = BaseGroundSpeed;
 		ActingAirSpeed = BaseAirSpeed;
@@ -48,16 +46,9 @@ public partial class LocomotionComponent : BaseComponent
 
 		FindWishes();
 		FigureHorizontalMovement(dt);
-		DoGravity(dt);
 
 		Body.MoveAndSlide();
 	}
-
-	private void DoGravity(float delta)
-	{
-		Body.Velocity += _worldGravity * delta;
-	}
-
 	private void FindWishes()
 	{
 		Vector3 localInput = InputStream.MoveWishDir;
@@ -92,7 +83,7 @@ public partial class LocomotionComponent : BaseComponent
 		}
 		else
 		{
-			float airCap = BaseAirSpeed;
+			float airCap = MathF.Max(BaseAirSpeed, horizontal.Length());
 
 			horizontal = Accelerated(
 				horizontal,
@@ -120,19 +111,29 @@ public partial class LocomotionComponent : BaseComponent
 	{
 		float currentSpeed = vel.Dot(wishDir);
 		float addSpeed = wishSpeed - currentSpeed;
-
-		if (addSpeed <= 0f)
+		
+		if (currentSpeed >= maxSpeed)
+		{
 			return vel;
-
+		}
+		if (addSpeed <= 0f)
+		{
+			return vel;
+		}
 		float accelSpeed = accel * wishSpeed * delta;
 
 		if (accelSpeed > addSpeed)
+		{
 			accelSpeed = addSpeed;
+		}
 
 		float newSpeed = currentSpeed + accelSpeed;
 
 		if (newSpeed > maxSpeed)
+		{
 			accelSpeed = maxSpeed - currentSpeed;
+		}
+
 
 		return vel + wishDir * accelSpeed;
 	}

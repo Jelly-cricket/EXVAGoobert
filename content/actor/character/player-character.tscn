@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bcv2yrvueducf" path="res://content/component/stat/mana-stat.tscn" id="4_mpsw7"]
 [ext_resource type="PackedScene" uid="uid://bjh814070bo20" path="res://content/component/motion/gravity-component.tscn" id="5_238ji"]
 [ext_resource type="PackedScene" uid="uid://c3qavv5vrvawp" path="res://content/component/input/camera-controller-component.tscn" id="6_4e8vj"]
-[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://content/actor/character/fps.gd" id="7_oafcr"]
+[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://fps.gd" id="7_oafcr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
 
