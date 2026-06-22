@@ -5,6 +5,7 @@ namespace EXVAG.Component.Item;
 [GlobalClass]
 public partial class WeaponRoot : Node3D
 {
+	public Node3D AimReference { get; set; }
 	public CharacterInputSignals InputSource { get; set; }
 	public StatComponent AmmoSource { get; set; }
 	public void ConnectActionSignals()

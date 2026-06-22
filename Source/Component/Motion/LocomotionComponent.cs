@@ -8,6 +8,7 @@ public partial class LocomotionComponent : BaseComponent
 {
 	[ExportCategory("References")]
 	[Export] public CharacterBody3D Body { get; private set; }
+	[Export] public Node3D FrameOfReference { get; private set; }
 	[Export] public Input.CharacterInputStream InputStream { get; private set; }
 
 	[ExportCategory("Base Speeds")]
@@ -54,8 +55,8 @@ public partial class LocomotionComponent : BaseComponent
 		Vector3 localInput = InputStream.MoveWishDir;
 
 		_wishDir = (
-			Body.GlobalTransform.Basis.X * localInput.X +
-			Body.GlobalTransform.Basis.Z * localInput.Z
+			FrameOfReference.GlobalTransform.Basis.X * localInput.X +
+			FrameOfReference.GlobalTransform.Basis.Z * localInput.Z
 		).Normalized();
 
 		_wishVel = _wishDir * BaseGroundSpeed;
@@ -83,7 +84,7 @@ public partial class LocomotionComponent : BaseComponent
 		}
 		else
 		{
-			float airCap = MathF.Max(BaseAirSpeed, horizontal.Length());
+			float airCap = MathF.Min(BaseAirSpeed, horizontal.Length());
 
 			horizontal = Accelerated(
 				horizontal,
@@ -101,41 +102,36 @@ public partial class LocomotionComponent : BaseComponent
 		Body.Velocity = vel;
 	}
 
-	private static Vector3 Accelerated(
-		Vector3 vel,
-		Vector3 wishDir,
+	public static Vector3 Accelerated
+	(
+		Vector3 velocity,
+		Vector3 wishDirection,
 		float wishSpeed,
-		float accel,
+		float acceleration,
 		float delta,
-		float maxSpeed)
+		float maxSpeed
+	)
 	{
-		float currentSpeed = vel.Dot(wishDir);
+		float currentSpeed = velocity.Dot(wishDirection);
 		float addSpeed = wishSpeed - currentSpeed;
-		
-		if (currentSpeed >= maxSpeed)
-		{
-			return vel;
-		}
-		if (addSpeed <= 0f)
-		{
-			return vel;
-		}
-		float accelSpeed = accel * wishSpeed * delta;
 
+		if (addSpeed <= 0)
+		{
+			return velocity;
+		}
+
+		float accelSpeed = acceleration * wishSpeed * delta;
+		
 		if (accelSpeed > addSpeed)
 		{
 			accelSpeed = addSpeed;
 		}
-
 		float newSpeed = currentSpeed + accelSpeed;
-
 		if (newSpeed > maxSpeed)
 		{
 			accelSpeed = maxSpeed - currentSpeed;
 		}
-
-
-		return vel + wishDir * accelSpeed;
+		return velocity + (wishDirection * accelSpeed);
 	}
 
 	private Vector3 FrictionApplied(Vector3 vel, float delta)

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b01wbg5boc5as"]
+
+[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://Scene/Character/PlayerCharacter.tscn" id="1_mb1hm"]
+[ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://Scene/block.tscn" id="2_ql5eh"]
+
+[node name="TestLevel" type="Node3D" unique_id=1437034398]
+
+[node name="Goobert" parent="." unique_id=1585261278 instance=ExtResource("1_mb1hm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Floor" type="Node3D" parent="." unique_id=313126596]
+
+[node name="Block" parent="Floor" unique_id=677878415 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 11, -0.5, 0)
+
+[node name="Block2" parent="Floor" unique_id=151278496 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, -0.5, 0)
+
+[node name="Block3" parent="Floor" unique_id=1031801620 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, -11, -0.5, -11)
+
+[node name="Block5" parent="Floor" unique_id=723040733 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, -0.5, -11)
+
+[node name="Block6" parent="Floor" unique_id=2135516076 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 11, -0.5, -11)
+
+[node name="Block4" parent="Floor" unique_id=227189164 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, -11, -0.5, 0)
+
+[node name="Block7" parent="Floor" unique_id=1813238591 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 11, -0.5, 11)
+
+[node name="Block8" parent="Floor" unique_id=956989252 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, 0, -0.5, 11)
+
+[node name="Block9" parent="Floor" unique_id=668724510 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, -11, -0.5, 11)
+
+[node name="Block" parent="." unique_id=85972801 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(0.8660254, 0, -2.75, 0, 1, 0, 0.5, 0, 4.7631397, -7, 0.5, -3)
+
+[node name="Block4" parent="." unique_id=92431904 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(0.51961523, 0, -0.84474415, 0, 3, 0, 0.3, 0, 1.4631398, 6, 1.5, -4)
+
+[node name="Block2" parent="." unique_id=665285834 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(0.8660254, 0, -2.75, 0, 2, 0, 0.5, 0, 4.7631397, -9, 1, -4)
+
+[node name="Block3" parent="." unique_id=1062040403 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(2.6562958, 0, 2.066042, 0, 2.7499998, 0, -0.7117523, 0, 7.7105737, -12.915142, 1.4, -1.6083446)

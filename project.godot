@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="EXVAGoobert"
-run/main_scene="uid://bseieahfruiqe"
+run/main_scene="uid://b01wbg5boc5as"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

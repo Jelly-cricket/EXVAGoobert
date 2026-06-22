@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://b6awjbwfeven7"]
 
 [ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://Asset/Material/PersonalBubble.tres" id="1_4e8vj"]
-[ext_resource type="PackedScene" path="res://Content/component/motion/locomotion-component.tscn" id="1_ac5cv"]
-[ext_resource type="PackedScene" path="res://Content/component/motion/jump-component.tscn" id="2_rblbq"]
-[ext_resource type="PackedScene" path="res://Content/component/input/player-input-signals.tscn" id="2_vq8ia"]
-[ext_resource type="PackedScene" path="res://Content/component/input/player-input-stream.tscn" id="3_crm2y"]
-[ext_resource type="PackedScene" path="res://Content/component/motion/gravity-component.tscn" id="5_238ji"]
-[ext_resource type="PackedScene" path="res://Content/component/input/camera-controller-component.tscn" id="6_4e8vj"]
+[ext_resource type="Script" uid="uid://vufxcnyttsor" path="res://Source/Component/Input/PlayerInputSignals.cs" id="2_fq4q0"]
+[ext_resource type="Script" uid="uid://dbqv5sxnnnkp5" path="res://Source/Component/Input/PlayerInputStream.cs" id="3_kgmyv"]
+[ext_resource type="Script" uid="uid://b8ycnqfwwwshv" path="res://Source/Component/Motion/LocomotionComponent.cs" id="4_5ncrg"]
+[ext_resource type="Script" uid="uid://cp0brjjnbry4o" path="res://Source/Component/Input/CameraControllerComponent.cs" id="4_kgmyv"]
+[ext_resource type="Script" uid="uid://bh024doofdu3k" path="res://Source/Component/Motion/GravityComponent.cs" id="5_6jv6n"]
+[ext_resource type="Script" uid="uid://qiwn0olbfxel" path="res://Source/Component/Motion/JumpComponent.cs" id="6_ko831"]
 [ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://fps.gd" id="7_oafcr"]
-[ext_resource type="PackedScene" path="res://Content/component/item/hand-component.tscn" id="10_crm2y"]
+[ext_resource type="Script" uid="uid://pp2wstd2ff82" path="res://Source/Component/StatComponent.cs" id="7_t6sbf"]
+[ext_resource type="Script" uid="uid://bpyyc7uciisc2" path="res://Source/Component/Item/HandComponent.cs" id="8_eooln"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
 
@@ -27,6 +28,25 @@ cap_bottom = false
 [node name="Goobert" type="CharacterBody3D" unique_id=1585261278]
 collision_layer = 2
 
+[node name="BodyPivot" type="Node3D" parent="." unique_id=566329648]
+
+[node name="CameraFocus" type="Marker3D" parent="BodyPivot" unique_id=1623724240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+gizmo_extents = 2.0
+
+[node name="SpringArm3D" type="SpringArm3D" parent="BodyPivot/CameraFocus" unique_id=1070161049]
+spring_length = 4.0
+margin = 0.05
+
+[node name="Viewpoint" type="Camera3D" parent="BodyPivot/CameraFocus/SpringArm3D" unique_id=457187770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 4)
+fov = 85.0
+near = 0.1
+
+[node name="EyeLine" type="RayCast3D" parent="BodyPivot/CameraFocus/SpringArm3D/Viewpoint" unique_id=685688749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, -4)
+target_position = Vector3(0, 0, -20)
+
 [node name="PhysBox" type="CollisionShape3D" parent="." unique_id=831764037]
 shape = SubResource("CapsuleShape3D_24okm")
 
@@ -34,50 +54,71 @@ shape = SubResource("CapsuleShape3D_24okm")
 material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CapsuleMesh_u0dx0")
 
-[node name="Weapon" type="MeshInstance3D" parent="." unique_id=579117651]
+[node name="HandAnchor" type="Marker3D" parent="." unique_id=911748951]
+
+[node name="Weapon" type="MeshInstance3D" parent="HandAnchor" unique_id=579117651]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.39999998, -0.9)
 material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CylinderMesh_k3i4l")
 
-[node name="CameraFocus" type="Marker3D" parent="." unique_id=1623724240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-gizmo_extents = 2.0
-
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraFocus" unique_id=1070161049]
-spring_length = 4.0
-margin = 0.05
-
-[node name="Viewpoint" type="Camera3D" parent="CameraFocus/SpringArm3D" unique_id=457187770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 4)
-fov = 85.0
-near = 0.1
-
 [node name="Components" type="Node" parent="." unique_id=1660861480]
 
-[node name="PlayerInputSignalComponent" parent="Components" unique_id=1805821591 instance=ExtResource("2_vq8ia")]
+[node name="PlayerInputSignals" type="Node" parent="Components" unique_id=512934441]
+script = ExtResource("2_fq4q0")
 
-[node name="PlayerInputStreamComponent" parent="Components" unique_id=1382118842 instance=ExtResource("3_crm2y")]
+[node name="PlayerInputStream" type="Node" parent="Components" unique_id=1892932566]
+script = ExtResource("3_kgmyv")
 
-[node name="LocomotionComponent" parent="Components" unique_id=2087060992 node_paths=PackedStringArray("Body", "InputStream") instance=ExtResource("1_ac5cv")]
+[node name="CameraComponent" type="Node" parent="Components" unique_id=1691513959 node_paths=PackedStringArray("Body", "Pivot")]
+script = ExtResource("4_kgmyv")
+Body = NodePath("../../BodyPivot")
+Pivot = NodePath("../../BodyPivot/CameraFocus")
+
+[node name="LocomotionComponent" type="Node" parent="Components" unique_id=1793331713 node_paths=PackedStringArray("Body", "FrameOfReference", "InputStream")]
+script = ExtResource("4_5ncrg")
 Body = NodePath("../..")
-InputStream = NodePath("../PlayerInputStreamComponent")
-BaseGroundAccel = 18.6
-BaseFriction = 14.8
+FrameOfReference = NodePath("../../BodyPivot")
+InputStream = NodePath("../PlayerInputStream")
+BaseFriction = 11.6
 
-[node name="GravityComponent" parent="Components" unique_id=2008437012 node_paths=PackedStringArray("Body") instance=ExtResource("5_238ji")]
+[node name="GravityComponent" type="Node" parent="Components" unique_id=1137335145 node_paths=PackedStringArray("Body")]
+script = ExtResource("5_6jv6n")
 Body = NodePath("../..")
 
-[node name="JumpComponent" parent="Components" unique_id=1642074996 node_paths=PackedStringArray("Body", "SignalSource") instance=ExtResource("2_rblbq")]
+[node name="JumpComponent" type="Node" parent="Components" unique_id=1853644487 node_paths=PackedStringArray("Body", "SignalSource")]
+script = ExtResource("6_ko831")
 Body = NodePath("../..")
-SignalSource = NodePath("../PlayerInputSignalComponent")
-SkipPower = 0.7
+SignalSource = NodePath("../PlayerInputSignals")
+JumpCooldownDuration = 0.35
+CoyoteDuration = 0.16
+JumpBufferDuration = 0.33
+SkipPower = -0.2
 
-[node name="CameraControllerComponent" parent="Components" unique_id=1204759029 node_paths=PackedStringArray("Body", "Pivot") instance=ExtResource("6_4e8vj")]
-Body = NodePath("../..")
-Pivot = NodePath("../../CameraFocus")
+[node name="LifeStat" type="Node" parent="Components" unique_id=728105661]
+script = ExtResource("7_t6sbf")
+StartAmount = 100.0
+RegenDelay = 1.6
+RegenRate = 9.22
+UpperSnap = 80.0
+LowerSnap = 15.0
 
-[node name="HandComponent" parent="Components" unique_id=55490733 node_paths=PackedStringArray("InputSource") instance=ExtResource("10_crm2y")]
-InputSource = NodePath("../PlayerInputSignalComponent")
+[node name="AmmoStat" type="Node" parent="Components" unique_id=1507178899]
+script = ExtResource("7_t6sbf")
+StartAmount = 150.0
+MaxAmount = 200.0
+RegenerateFromEmpty = true
+RegenDelay = 0.3
+RegenRate = 3.5
+UpperSnap = 200.0
+LowerSnap = 25.0
+MinBounce = 0.0
+
+[node name="HandComponent" type="Node" parent="Components" unique_id=1607433039 node_paths=PackedStringArray("InputSource", "AmmoSource", "CharacterEyeline", "CharacterHand")]
+script = ExtResource("8_eooln")
+InputSource = NodePath("../PlayerInputSignals")
+AmmoSource = NodePath("../AmmoStat")
+CharacterEyeline = NodePath("../../BodyPivot/CameraFocus/SpringArm3D/Viewpoint/EyeLine")
+CharacterHand = NodePath("../../HandAnchor")
 
 [node name="Label" type="Label" parent="." unique_id=372353809 node_paths=PackedStringArray("body")]
 offset_right = 40.0

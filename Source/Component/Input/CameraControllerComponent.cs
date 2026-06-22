@@ -5,7 +5,7 @@ namespace EXVAG.Component.Input;
 public partial class CameraControllerComponent : BaseComponent
 {
 	[ExportCategory("References")]
-	[Export] public CharacterBody3D Body { get; private set; }
+	[Export] public Node3D Body { get; private set; }
 	[Export] public Node3D Pivot { get; private set; }
 	[ExportCategory("Sensitivities")]
 	[Export] public float VerticalSensitivity { get; private set; } = 0.003f;
