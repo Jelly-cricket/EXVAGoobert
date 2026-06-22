@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bseieahfruiqe"]
+
+[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://Asset/Material/PersonalBubble.tres" id="1_ub03c"]
+[ext_resource type="Script" uid="uid://vufxcnyttsor" path="res://Source/Component/Input/PlayerInputSignals.cs" id="2_yt3uu"]
+[ext_resource type="Script" uid="uid://dbqv5sxnnnkp5" path="res://Source/Component/Input/PlayerInputStream.cs" id="3_6vob2"]
+[ext_resource type="Script" path="res://Source/Component/Motion/LocomotionComponent.cs" id="4_a50o7"]
+[ext_resource type="Script" path="res://Source/Component/Motion/GravityComponent.cs" id="5_opvo7"]
+[ext_resource type="Script" path="res://Source/Component/Motion/JumpComponent.cs" id="6_pulsc"]
+[ext_resource type="Script" uid="uid://cp0brjjnbry4o" path="res://Source/Component/Input/CameraControllerComponent.cs" id="7_6b4xd"]
+[ext_resource type="Script" path="res://Source/Component/Item/HandComponent.cs" id="8_upc4j"]
+[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://fps.gd" id="9_7ohrv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u0dx0"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k3i4l"]
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 12
+rings = 6
+cap_top = false
+cap_bottom = false
+
+[node name="Goobert" type="CharacterBody3D" unique_id=1585261278]
+collision_layer = 2
+
+[node name="PhysBox" type="CollisionShape3D" parent="." unique_id=831764037]
+shape = SubResource("CapsuleShape3D_24okm")
+
+[node name="VisBox" type="MeshInstance3D" parent="." unique_id=1951467864]
+material_override = ExtResource("1_ub03c")
+mesh = SubResource("CapsuleMesh_u0dx0")
+
+[node name="Weapon" type="MeshInstance3D" parent="." unique_id=579117651]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.39999998, -0.9)
+material_override = ExtResource("1_ub03c")
+mesh = SubResource("CylinderMesh_k3i4l")
+
+[node name="CameraFocus" type="Marker3D" parent="." unique_id=1623724240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+gizmo_extents = 2.0
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraFocus" unique_id=1070161049]
+spring_length = 4.0
+margin = 0.05
+
+[node name="Viewpoint" type="Camera3D" parent="CameraFocus/SpringArm3D" unique_id=457187770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9604645e-08, 4)
+fov = 85.0
+near = 0.1
+
+[node name="Components" type="Node" parent="." unique_id=1660861480]
+
+[node name="PlayerInputSignalComponent" type="Node" parent="Components" unique_id=1805821591]
+script = ExtResource("2_yt3uu")
+
+[node name="PlayerInputStreamComponent" type="Node" parent="Components" unique_id=1382118842]
+script = ExtResource("3_6vob2")
+
+[node name="LocomotionComponent" type="Node" parent="Components" unique_id=2087060992 node_paths=PackedStringArray("Body", "InputStream")]
+script = ExtResource("4_a50o7")
+Body = NodePath("../..")
+InputStream = NodePath("../PlayerInputStreamComponent")
+BaseGroundAccel = 18.6
+BaseFriction = 14.8
+
+[node name="GravityComponent" type="Node" parent="Components" unique_id=2008437012 node_paths=PackedStringArray("Body")]
+script = ExtResource("5_opvo7")
+Body = NodePath("../..")
+
+[node name="JumpComponent" type="Node" parent="Components" unique_id=1642074996 node_paths=PackedStringArray("Body", "SignalSource")]
+script = ExtResource("6_pulsc")
+Body = NodePath("../..")
+SignalSource = NodePath("../PlayerInputSignalComponent")
+SkipPower = 0.7
+
+[node name="CameraControllerComponent" type="Node" parent="Components" unique_id=1204759029 node_paths=PackedStringArray("Body", "Pivot")]
+script = ExtResource("7_6b4xd")
+Body = NodePath("../..")
+Pivot = NodePath("../../CameraFocus")
+
+[node name="HandComponent" type="Node" parent="Components" unique_id=55490733 node_paths=PackedStringArray("InputSource")]
+script = ExtResource("8_upc4j")
+InputSource = NodePath("../PlayerInputSignalComponent")
+
+[node name="Label" type="Label" parent="." unique_id=372353809 node_paths=PackedStringArray("body")]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("9_7ohrv")
+body = NodePath("..")

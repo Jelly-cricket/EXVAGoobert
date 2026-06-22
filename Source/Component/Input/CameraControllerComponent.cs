@@ -1,8 +1,6 @@
-using EXVAG.Component;
 using Godot;
 using System;
 namespace EXVAG.Component.Input;
-
 [GlobalClass]
 public partial class CameraControllerComponent : BaseComponent
 {

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c3qavv5vrvawp"]
-
-[ext_resource type="Script" uid="uid://cp0brjjnbry4o" path="res://Source/Component/Input/CameraControllerComponent.cs" id="1_vtqhg"]
-
-[node name="CameraControllerComponent" type="Node" unique_id=1204759029]
-script = ExtResource("1_vtqhg")
