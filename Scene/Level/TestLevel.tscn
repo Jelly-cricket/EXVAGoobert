@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://Scene/Character/PlayerCharacter.tscn" id="1_mb1hm"]
 [ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://Scene/block.tscn" id="2_ql5eh"]
 
+[sub_resource type="Environment" id="Environment_tls2x"]
+
 [node name="TestLevel" type="Node3D" unique_id=1437034398]
 
 [node name="Goobert" parent="." unique_id=1585261278 instance=ExtResource("1_mb1hm")]
@@ -48,3 +50,6 @@ transform = Transform3D(0.8660254, 0, -2.75, 0, 2, 0, 0.5, 0, 4.7631397, -9, 1, 
 
 [node name="Block3" parent="." unique_id=1062040403 instance=ExtResource("2_ql5eh")]
 transform = Transform3D(2.6562958, 0, 2.066042, 0, 2.7499998, 0, -0.7117523, 0, 7.7105737, -12.915142, 1.4, -1.6083446)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=116862792]
+environment = SubResource("Environment_tls2x")

@@ -16,6 +16,7 @@ public partial class LocomotionComponent : BaseComponent
 	[Export] public float BaseAirSpeed { get; private set; } = 3.2f;
 	[Export] public float BaseGroundAccel { get; private set; } = 14.6f;
 	[Export] public float BaseAirAccel { get; private set; } = 1.4f;
+	[ExportCategory("Physics")]
 	[Export] public float BaseFriction { get; private set; } = 22.4f;
 
 	private Vector3 _wishDir;

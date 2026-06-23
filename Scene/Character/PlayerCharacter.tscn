@@ -10,12 +10,13 @@
 [ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://fps.gd" id="7_oafcr"]
 [ext_resource type="Script" uid="uid://pp2wstd2ff82" path="res://Source/Component/StatComponent.cs" id="7_t6sbf"]
 [ext_resource type="Script" uid="uid://bpyyc7uciisc2" path="res://Source/Component/Item/HandComponent.cs" id="8_eooln"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
+[ext_resource type="PackedScene" uid="uid://jqyiprmc860u" path="res://GUI/StatTrackerBar.tscn" id="11_5ncrg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u0dx0"]
 radial_segments = 8
 rings = 4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_k3i4l"]
 bottom_radius = 0.2
@@ -24,6 +25,42 @@ radial_segments = 12
 rings = 6
 cap_top = false
 cap_bottom = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ncrg"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jv6n"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ko831"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 1, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [node name="Goobert" type="CharacterBody3D" unique_id=1585261278]
 collision_layer = 2
@@ -47,12 +84,12 @@ near = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9604645e-08, -4)
 target_position = Vector3(0, 0, -20)
 
-[node name="PhysBox" type="CollisionShape3D" parent="." unique_id=831764037]
-shape = SubResource("CapsuleShape3D_24okm")
-
-[node name="VisBox" type="MeshInstance3D" parent="." unique_id=1951467864]
+[node name="VisBox" type="MeshInstance3D" parent="BodyPivot" unique_id=1951467864]
 material_override = ExtResource("1_4e8vj")
 mesh = SubResource("CapsuleMesh_u0dx0")
+
+[node name="PhysBox" type="CollisionShape3D" parent="." unique_id=831764037]
+shape = SubResource("CapsuleShape3D_24okm")
 
 [node name="HandAnchor" type="Marker3D" parent="." unique_id=911748951]
 
@@ -96,21 +133,29 @@ SkipPower = -0.2
 
 [node name="LifeStat" type="Node" parent="Components" unique_id=728105661]
 script = ExtResource("7_t6sbf")
-StartAmount = 100.0
-RegenDelay = 1.6
-RegenRate = 9.22
-UpperSnap = 80.0
+StartAmount = 5.0
+RegenDelay = 3.8
+RegenRate = 32.6
+UpperSnap = 85.0
 LowerSnap = 15.0
+
+[node name="ManaStat" type="Node" parent="Components" unique_id=1348324231]
+script = ExtResource("7_t6sbf")
+StartAmount = 15.0
+MaxAmount = 150.0
+RegenerateFromEmpty = true
+RegenDelay = 0.4
+RegenRate = 1.16
+UpperSnap = 150.0
+MinBounce = 0.0
 
 [node name="AmmoStat" type="Node" parent="Components" unique_id=1507178899]
 script = ExtResource("7_t6sbf")
-StartAmount = 150.0
-MaxAmount = 200.0
+StartAmount = 80.0
 RegenerateFromEmpty = true
-RegenDelay = 0.3
-RegenRate = 3.5
-UpperSnap = 200.0
-LowerSnap = 25.0
+RegenDelay = 0.12
+RegenRate = 3.54
+LowerSnap = 5.0
 MinBounce = 0.0
 
 [node name="HandComponent" type="Node" parent="Components" unique_id=1607433039 node_paths=PackedStringArray("InputSource", "AmmoSource", "CharacterEyeline", "CharacterHand")]
@@ -125,3 +170,43 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("7_oafcr")
 body = NodePath("..")
+
+[node name="PlayerGUI" type="Control" parent="." unique_id=1387291725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LifeStat" parent="PlayerGUI" unique_id=1470270898 node_paths=PackedStringArray("StatSource") instance=ExtResource("11_5ncrg")]
+layout_mode = 0
+anchor_top = 0.94074076
+anchor_right = 0.4
+anchor_bottom = 0.9851852
+theme_override_styles/fill = SubResource("StyleBoxFlat_5ncrg")
+step = 1.0
+StatSource = NodePath("../../Components/LifeStat")
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoStat" parent="PlayerGUI" unique_id=836084452 node_paths=PackedStringArray("StatSource") instance=ExtResource("11_5ncrg")]
+layout_mode = 0
+anchor_top = 0.88148147
+anchor_right = 0.33333334
+anchor_bottom = 0.9259259
+theme_override_styles/fill = SubResource("StyleBoxFlat_6jv6n")
+step = 1.0
+StatSource = NodePath("../../Components/AmmoStat")
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaStat" parent="PlayerGUI" unique_id=2056298144 node_paths=PackedStringArray("StatSource") instance=ExtResource("11_5ncrg")]
+layout_mode = 0
+anchor_top = 0.82222223
+anchor_right = 0.26666668
+anchor_bottom = 0.8666667
+theme_override_styles/fill = SubResource("StyleBoxFlat_ko831")
+step = 1.0
+StatSource = NodePath("../../Components/ManaStat")
+metadata/_edit_use_anchors_ = true

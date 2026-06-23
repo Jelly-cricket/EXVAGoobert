@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://jqyiprmc860u"]
+
+[ext_resource type="Script" uid="uid://bv6w407tlrjgp" path="res://GUI/StatTrackerBar.gd" id="1_5xrrb"]
+
+[node name="StatTrackerBar" type="ProgressBar" unique_id=1470270898]
+script = ExtResource("1_5xrrb")
