@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel;
 namespace EXVAG.Component.Motion;
 
 [GlobalClass]
@@ -20,7 +19,6 @@ public partial class LocomotionComponent : BaseComponent
 	[Export] public float BaseFriction { get; private set; } = 22.4f;
 
 	private Vector3 _wishDir;
-	private Vector3 _wishVel;
 
 	public float ActingGroundSpeed { get; private set; }
 	public float ActingAirSpeed { get; private set; }
@@ -46,6 +44,7 @@ public partial class LocomotionComponent : BaseComponent
 	{
 		float dt = (float)delta;
 
+
 		FindWishes();
 		FigureHorizontalMovement(dt);
 
@@ -59,16 +58,19 @@ public partial class LocomotionComponent : BaseComponent
 			FrameOfReference.GlobalTransform.Basis.X * localInput.X +
 			FrameOfReference.GlobalTransform.Basis.Z * localInput.Z
 		).Normalized();
-
-		_wishVel = _wishDir * BaseGroundSpeed;
 	}
 
 	private void FigureHorizontalMovement(float delta)
 	{
+
+		float wishSpeed = Body.IsOnFloor()
+			? BaseGroundSpeed
+			: BaseAirSpeed;
+
 		Vector3 vel = Body.Velocity;
 		Vector3 horizontal = new(vel.X, 0f, vel.Z);
 
-		float wishSpeed = _wishVel.Length();
+
 
 		if (Body.IsOnFloor())
 		{
@@ -79,28 +81,29 @@ public partial class LocomotionComponent : BaseComponent
 				_wishDir,
 				wishSpeed,
 				BaseGroundAccel,
-				delta,
-				wishSpeed
+				delta
 			);
 		}
 		else
 		{
-			float airCap = MathF.Min(BaseAirSpeed, horizontal.Length());
-
 			horizontal = Accelerated(
 				horizontal,
 				_wishDir,
-				wishSpeed,
+				MathF.Min(wishSpeed, BaseAirSpeed),
 				BaseAirAccel,
-				delta,
-				airCap
+				delta
 			);
 		}
 
 		vel.X = horizontal.X;
 		vel.Z = horizontal.Z;
-
+		//GD.Print(
+		//	$"Speed: {horizontal.Length():F2} " +
+		//	$"WishDir: {_wishDir} " +
+		//	$"Dot: {horizontal.Dot(_wishDir):F2}"
+		//);
 		Body.Velocity = vel;
+
 	}
 
 	public static Vector3 Accelerated
@@ -109,8 +112,7 @@ public partial class LocomotionComponent : BaseComponent
 		Vector3 wishDirection,
 		float wishSpeed,
 		float acceleration,
-		float delta,
-		float maxSpeed
+		float delta
 	)
 	{
 		float currentSpeed = velocity.Dot(wishDirection);
@@ -122,17 +124,11 @@ public partial class LocomotionComponent : BaseComponent
 		}
 
 		float accelSpeed = acceleration * wishSpeed * delta;
-		
 		if (accelSpeed > addSpeed)
 		{
 			accelSpeed = addSpeed;
 		}
-		float newSpeed = currentSpeed + accelSpeed;
-		if (newSpeed > maxSpeed)
-		{
-			accelSpeed = maxSpeed - currentSpeed;
-		}
-		return velocity + (wishDirection * accelSpeed);
+		return velocity + wishDirection * accelSpeed;
 	}
 
 	private Vector3 FrictionApplied(Vector3 vel, float delta)

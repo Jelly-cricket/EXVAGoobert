@@ -10,26 +10,43 @@ public partial class HandComponent : BaseComponent
 	[Export] public StatComponent AmmoSource { get; set; }
 	[Export] public RayCast3D CharacterEyeline { get; set; }
 	[Export] public Node3D CharacterHand { get; set; }
+	
+	[ExportCategory("Items")]
 	[Export] public PackedScene DefaultScene { get; set; }
+	
+	[ExportCategory("Aiming")]
+	[Export] public float BaseDriftSpeed { get; set; }
 
 	public WeaponRoot EquippedWeapon { get; private set; }
+
+	public Quaternion DesiredAimAngle { get; private set; }
+	public Quaternion DriftAimAngle { get; private set; }
+
+	public override void _Ready()
+	{
+		//EquipScene(DefaultScene);
+
+		DriftAimAngle = CharacterHand.GlobalBasis
+			.GetRotationQuaternion()
+			.Normalized();
+
+		DesiredAimAngle = DriftAimAngle;
+	}
+
 
 	public void EquipScene(PackedScene itemScene)
 	{
 		Unequip();
 		EquippedWeapon = itemScene.Instantiate<WeaponRoot>();
 		CharacterHand.AddChild(EquippedWeapon);
-		EquippedWeapon.EquipTo(InputSource,AmmoSource);
+		EquippedWeapon.EquipTo(InputSource, AmmoSource);
 	}
 	public void Unequip()
 	{
 		EquippedWeapon?.QueueFree();
 	}
-	public override void _Ready()
-	{
-		EquipScene(DefaultScene);
-	}
-	public void DriftAim(double delta)
+
+	public void UpdateDesiredAim()
 	{
 		Vector3 target;
 
@@ -40,7 +57,7 @@ public partial class HandComponent : BaseComponent
 		else
 		{
 			target = CharacterEyeline.GlobalPosition +
-					 CharacterEyeline.GlobalBasis.Z * -1000f;
+				CharacterEyeline.GlobalBasis.Z * -1000f;
 		}
 
 		Transform3D desired = CharacterHand.GlobalTransform.LookingAt(
@@ -48,13 +65,29 @@ public partial class HandComponent : BaseComponent
 			Vector3.Up
 		);
 
-		CharacterHand.GlobalBasis = CharacterHand.GlobalBasis.Slerp(
-			desired.Basis,
-			(float)(delta * 15.0)
-		);
+		DesiredAimAngle = desired.Basis.GetRotationQuaternion().Normalized();
 	}
-	public override void _PhysicsProcess(double delta)
+
+	public void UpdateDriftedAim(double delta)
 	{
-		DriftAim(delta);
+		float t = Mathf.Clamp((float)(delta * BaseDriftSpeed), 0f, 1f);
+
+		DriftAimAngle = DriftAimAngle
+			.Slerp(DesiredAimAngle, t)
+			.Normalized();
+
+		CharacterHand.GlobalBasis = new Basis(DriftAimAngle);
+	}
+
+	public void UpdateAims(double delta)
+	{
+		UpdateDesiredAim();
+		UpdateDriftedAim(delta);
+		//GD.Print($"Desired: {DesiredAimAngle.Length()}");
+		//GD.Print($"Drift: {DriftAimAngle.Length()}");
+	}
+	public override void _PhysicsProcess(double delta) 
+	{
+		UpdateAims(delta);
 	}
 }

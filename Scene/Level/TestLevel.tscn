@@ -3,7 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://Scene/Character/PlayerCharacter.tscn" id="1_mb1hm"]
 [ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://Scene/block.tscn" id="2_ql5eh"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nvbbb"]
+
+[sub_resource type="Sky" id="Sky_ch4up"]
+sky_material = SubResource("ProceduralSkyMaterial_nvbbb")
+radiance_size = 1
+
 [sub_resource type="Environment" id="Environment_tls2x"]
+background_mode = 2
+sky = SubResource("Sky_ch4up")
 
 [node name="TestLevel" type="Node3D" unique_id=1437034398]
 

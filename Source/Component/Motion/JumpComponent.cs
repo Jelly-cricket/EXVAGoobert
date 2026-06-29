@@ -89,23 +89,21 @@ public partial class JumpComponent : BaseComponent
 		_jumpBufferTimer = 0;
 		_jumpCooldownTimer = JumpCooldownDuration;
 		_coyoteTimer = 0;
-	
-		float _newX = Body.Velocity.X;
-		float _newY = Body.Velocity.Y;
-		float _newZ = Body.Velocity.Z;
 
-		Vector3 _skipBoost = Body.Velocity.Normalized() * SkipPower;
+		Vector3 horizontal = new(Body.Velocity.X, 0, Body.Velocity.Z);
 
-		_newX += _skipBoost.X;
-		_newY += JumpPower;
-		_newZ += _skipBoost.Z;
+		if (horizontal.LengthSquared() > 0)
+		{
+			horizontal = horizontal.Normalized() * SkipPower;
+		}
 
 		Body.Velocity = new Vector3(
-			_newX,
-			_newY,
-			_newZ
+			Body.Velocity.X + horizontal.X,
+			JumpPower,
+			Body.Velocity.Z + horizontal.Z
 		);
 	}
+
 
 	private void RefreshCoyote()
 	{

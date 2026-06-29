@@ -116,6 +116,7 @@ script = ExtResource("4_5ncrg")
 Body = NodePath("../..")
 FrameOfReference = NodePath("../../BodyPivot")
 InputStream = NodePath("../PlayerInputStream")
+BaseAirAccel = 3.8
 BaseFriction = 11.6
 
 [node name="GravityComponent" type="Node" parent="Components" unique_id=1137335145 node_paths=PackedStringArray("Body")]
@@ -126,10 +127,9 @@ Body = NodePath("../..")
 script = ExtResource("6_ko831")
 Body = NodePath("../..")
 SignalSource = NodePath("../PlayerInputSignals")
-JumpCooldownDuration = 0.35
+JumpCooldownDuration = 0.38
 CoyoteDuration = 0.16
 JumpBufferDuration = 0.33
-SkipPower = -0.2
 
 [node name="LifeStat" type="Node" parent="Components" unique_id=728105661]
 script = ExtResource("7_t6sbf")
@@ -164,6 +164,7 @@ InputSource = NodePath("../PlayerInputSignals")
 AmmoSource = NodePath("../AmmoStat")
 CharacterEyeline = NodePath("../../BodyPivot/CameraFocus/SpringArm3D/Viewpoint/EyeLine")
 CharacterHand = NodePath("../../HandAnchor")
+BaseDriftSpeed = 8.0
 
 [node name="Label" type="Label" parent="." unique_id=372353809 node_paths=PackedStringArray("body")]
 offset_right = 40.0
