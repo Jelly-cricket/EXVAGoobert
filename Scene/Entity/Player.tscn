@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://b6awjbwfeven7"]
+
+[ext_resource type="PackedScene" uid="uid://dc5gkrnmc8fn4" path="res://Scene/Character/PlayerBody.tscn" id="1_7hnkd"]
+[ext_resource type="Script" uid="uid://vufxcnyttsor" path="res://Source/Input/PlayerInputSignals.cs" id="2_7hnkd"]
+[ext_resource type="Script" uid="uid://dbqv5sxnnnkp5" path="res://Source/Input/PlayerInputStream.cs" id="3_2djd1"]
+[ext_resource type="Script" uid="uid://cp0brjjnbry4o" path="res://Source/Input/CameraControllerComponent.cs" id="4_r4r1g"]
+[ext_resource type="Script" uid="uid://b8ycnqfwwwshv" path="res://Source/Motion/LocomotionComponent.cs" id="5_n6bxc"]
+[ext_resource type="Script" uid="uid://bh024doofdu3k" path="res://Source/Motion/GravityComponent.cs" id="6_2qgql"]
+[ext_resource type="Script" uid="uid://qiwn0olbfxel" path="res://Source/Motion/JumpComponent.cs" id="7_xjlt7"]
+[ext_resource type="Script" uid="uid://pp2wstd2ff82" path="res://Source/Common/StatComponent.cs" id="8_utr26"]
+[ext_resource type="Script" uid="uid://bpyyc7uciisc2" path="res://Source/Item/HandComponent.cs" id="9_u0a8y"]
+[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://GUI/fps.gd" id="10_5vcmg"]
+[ext_resource type="PackedScene" uid="uid://jqyiprmc860u" path="res://GUI/StatTrackerBar.tscn" id="11_7mevl"]
+[ext_resource type="Script" uid="uid://crt6afch64c66" path="res://GUI/ReticleProjector.gd" id="12_6ld6d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tls2x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24okm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ncrg"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jv6n"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ko831"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 1, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="Goobert" type="CharacterBody3D" unique_id=1585261278]
+collision_layer = 2
+
+[node name="BodyPivot" type="Node3D" parent="." unique_id=566329648]
+
+[node name="CameraFocus" type="Marker3D" parent="BodyPivot" unique_id=1623724240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+gizmo_extents = 2.0
+
+[node name="SelfieStick" type="SpringArm3D" parent="BodyPivot/CameraFocus" unique_id=1070161049]
+shape = SubResource("SphereShape3D_tls2x")
+spring_length = 4.0
+margin = 0.05
+
+[node name="CameraHook" type="Marker3D" parent="BodyPivot/CameraFocus/SelfieStick" unique_id=786112509]
+
+[node name="EyeLine" type="RayCast3D" parent="BodyPivot/CameraFocus" unique_id=685688749]
+target_position = Vector3(0, 0, -20)
+
+[node name="PlayerBody" parent="." unique_id=103543878 node_paths=PackedStringArray("HandRay", "EyeRay", "HipAlignmentReference") instance=ExtResource("1_7hnkd")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+HandRay = NodePath("../HandAnchor/MuzzleLine")
+EyeRay = NodePath("../BodyPivot/CameraFocus/EyeLine")
+HipAlignmentReference = NodePath("../BodyPivot")
+
+[node name="PhysBox" type="CollisionShape3D" parent="." unique_id=831764037]
+shape = SubResource("CapsuleShape3D_24okm")
+
+[node name="HandAnchor" type="Marker3D" parent="." unique_id=911748951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="MuzzleLine" type="RayCast3D" parent="HandAnchor" unique_id=1576189827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.450581e-09, 0)
+target_position = Vector3(0, 0, -20)
+
+[node name="Viewpoint" type="Camera3D" parent="." unique_id=457187770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8000001, 4)
+top_level = true
+fov = 85.0
+near = 0.1
+
+[node name="Components" type="Node" parent="." unique_id=1660861480]
+
+[node name="PlayerInputSignals" type="Node" parent="Components" unique_id=512934441]
+script = ExtResource("2_7hnkd")
+
+[node name="PlayerInputStream" type="Node" parent="Components" unique_id=1892932566]
+script = ExtResource("3_2djd1")
+
+[node name="CameraComponent" type="Node" parent="Components" unique_id=1691513959 node_paths=PackedStringArray("BodyPivot", "CameraPivot", "CameraHook", "ActualCamera")]
+script = ExtResource("4_r4r1g")
+BodyPivot = NodePath("../../BodyPivot")
+CameraPivot = NodePath("../../BodyPivot/CameraFocus")
+CameraHook = NodePath("../../BodyPivot/CameraFocus/SelfieStick/CameraHook")
+ActualCamera = NodePath("../../Viewpoint")
+
+[node name="LocomotionComponent" type="Node" parent="Components" unique_id=1793331713 node_paths=PackedStringArray("Body", "FrameOfReference", "InputStream")]
+script = ExtResource("5_n6bxc")
+Body = NodePath("../..")
+FrameOfReference = NodePath("../../BodyPivot")
+InputStream = NodePath("../PlayerInputStream")
+BaseFriction = 11.6
+
+[node name="GravityComponent" type="Node" parent="Components" unique_id=1137335145 node_paths=PackedStringArray("Body")]
+script = ExtResource("6_2qgql")
+Body = NodePath("../..")
+
+[node name="JumpComponent" type="Node" parent="Components" unique_id=1853644487 node_paths=PackedStringArray("Body", "SignalSource")]
+script = ExtResource("7_xjlt7")
+Body = NodePath("../..")
+SignalSource = NodePath("../PlayerInputSignals")
+JumpCooldownDuration = 0.38
+CoyoteDuration = 0.16
+JumpBufferDuration = 0.33
+SkipPower = -1.2
+
+[node name="LifeStat" type="Node" parent="Components" unique_id=728105661]
+script = ExtResource("8_utr26")
+StartAmount = 5.0
+RegenDelay = 3.8
+RegenRate = 32.6
+UpperSnap = 85.0
+LowerSnap = 15.0
+
+[node name="ManaStat" type="Node" parent="Components" unique_id=1348324231]
+script = ExtResource("8_utr26")
+StartAmount = 15.0
+MaxAmount = 150.0
+RegenerateFromEmpty = true
+RegenDelay = 0.4
+RegenRate = 1.16
+UpperSnap = 150.0
+MinBounce = 0.0
+
+[node name="AmmoStat" type="Node" parent="Components" unique_id=1507178899]
+script = ExtResource("8_utr26")
+StartAmount = 80.0
+RegenerateFromEmpty = true
+RegenDelay = 0.12
+RegenRate = 3.54
+LowerSnap = 5.0
+MinBounce = 0.0
+
+[node name="HandComponent" type="Node" parent="Components" unique_id=1607433039 node_paths=PackedStringArray("InputSource", "AmmoSource", "CharacterEyeline", "CharacterHand")]
+script = ExtResource("9_u0a8y")
+InputSource = NodePath("../PlayerInputSignals")
+AmmoSource = NodePath("../AmmoStat")
+CharacterEyeline = NodePath("../../BodyPivot/CameraFocus/EyeLine")
+CharacterHand = NodePath("../../HandAnchor")
+
+[node name="Label" type="Label" parent="." unique_id=372353809 node_paths=PackedStringArray("body")]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("10_5vcmg")
+body = NodePath("..")
+
+[node name="PlayerGUI" type="Control" parent="." unique_id=1387291725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LifeStat" parent="PlayerGUI" unique_id=1470270898 node_paths=PackedStringArray("StatSource") instance=ExtResource("11_7mevl")]
+layout_mode = 0
+anchor_top = 0.94074076
+anchor_right = 0.4
+anchor_bottom = 0.9851852
+theme_override_styles/fill = SubResource("StyleBoxFlat_5ncrg")
+step = 1.0
+StatSource = NodePath("../../Components/LifeStat")
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoStat" parent="PlayerGUI" unique_id=836084452 node_paths=PackedStringArray("StatSource") instance=ExtResource("11_7mevl")]
+layout_mode = 0
+anchor_top = 0.88148147
+anchor_right = 0.33333334
+anchor_bottom = 0.9259259
+theme_override_styles/fill = SubResource("StyleBoxFlat_6jv6n")
+step = 1.0
+StatSource = NodePath("../../Components/AmmoStat")
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaStat" parent="PlayerGUI" unique_id=2056298144 node_paths=PackedStringArray("StatSource") instance=ExtResource("11_7mevl")]
+layout_mode = 0
+anchor_top = 0.82222223
+anchor_right = 0.26666668
+anchor_bottom = 0.8666667
+theme_override_styles/fill = SubResource("StyleBoxFlat_ko831")
+step = 1.0
+StatSource = NodePath("../../Components/ManaStat")
+metadata/_edit_use_anchors_ = true
+
+[node name="ReticleProjection" type="Control" parent="PlayerGUI" unique_id=57422639 node_paths=PackedStringArray("AimRay", "MuzRay", "Camera")]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("12_6ld6d")
+AimRay = NodePath("../../BodyPivot/CameraFocus/EyeLine")
+MuzRay = NodePath("../../HandAnchor/MuzzleLine")
+Camera = NodePath("../../Viewpoint")

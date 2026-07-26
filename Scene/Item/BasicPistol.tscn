@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://dvcb1m15rhtb2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tls2x"]
+size = Vector3(0.2, 0.2, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcotk"]
+size = Vector3(0.2, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dl6s7"]
+size = Vector3(0.2, 0.2, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_slcoe"]
+size = Vector3(0.1, 0.4, 0.15)
+
+[sub_resource type="Animation" id="Animation_ad4b2"]
+resource_name = "RESET"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis/Slide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/Slide")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chassis/Magasine")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_vcotk"]
+resource_name = "bash"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.13333334, 1, 0, -0.2, 0.1, 0.26666668, 1, 0, 0.1, -0.2, 0.36666662, 1, 0, 0.6, -0.4, 0.5333333, 1, 0, 0.3, -0.2, 0.59999996, 1, 0, -0.1, 0, 0.76666665, 1, 0, 0, 0, 0.8666667, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, -0.300706, 0, 0, 0.953717, 0.2, 1, 0.34202, 0, 0, 0.939693, 0.26666668, 1, 0.866025, 0, 0, 0.5, 0.33333334, 1, 0.866025, 0, 0, 0.5, 0.41666666, 1, 0.707107, 0, 0, 0.707107, 0.56666666, 1, -0.130526, 0, 0, 0.991445, 0.7, 1, 0, 0, 0, 1, 0.8666667, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_1ceon"]
+resource_name = "draw"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.9, 0, 0.3, 1, 0, -0.3, 0, 0.43333334, 1, 0, 0.2, 0, 0.56666666, 1, 0, 0, 0, 0.93333334, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.766044, 0, 0, 0.642788, 0.23333333, 1, -0.573576, 0, 0, 0.819152, 0.5, 1, 0.130526, 0, 0, 0.991445, 0.7, 1, 0, 0, 0, 1, 0.93333334, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_mnbx6"]
+resource_name = "fire"
+length = 0.56666666
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 0, 0, 0, 0.13333334, 1, 0, 0.2, 0.3, 0.23333333, 1, 0, -0.06, -0.15, 0.36666667, 1, 0, 0, 0, 0.53333336, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis/Slide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.03333334, 1, 0, 0, 0.3, 0.06666667, 1, 0, 0, 0, 0.20000002, 1, 0, 0, 0)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0, 0, 0, 1, 0.1, 1, 0.300706, 0, 0, 0.953717, 0.20000002, 1, -0.043619, 0, 0, 0.999048, 0.3, 1, 0, 0, 0, 1, 0.43333334, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_1bkai"]
+resource_name = "holster"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.26666668, 1, 0, 0.3, 0, 0.4, 1, 0, 0.3, 0.1, 0.46666667, 1, 0, -0.1, 0.2, 0.6, 1, 0, -0.9, 0, 0.76666665, 1, 0, -0.9, 0, 0.8666667, 1, 0, -0.9, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.3, 1, -0.130526, 0, 0, 0.991445, 0.33333334, 1, 0.382683, 0, 0, 0.92388, 0.36666667, 1, 0.707107, 0, 0, 0.707107, 0.4, 1, 0.866025, 0, 0, 0.5, 0.43333334, 1, 1, 0, 0, 0, 0.53333336, 1, -0.573576, 0, 0, 0.819152, 0.6333333, 1, -0.707107, 0, 0, 0.707107, 0.7, 1, -0.707107, 0, 0, 0.707107, 0.9, 1, -0.707107, 0, 0, 0.707107)
+
+[sub_resource type="Animation" id="Animation_fcaxq"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 2, 1, 0, 0.2, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(1, 1, 0, 0.130526, 0, 0.991445, 3, 1, 0, -0.130526, 0, 0.991445)
+
+[sub_resource type="Animation" id="Animation_d8m2p"]
+resource_name = "reload"
+length = 1.4
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.20000002, 1, 0, 0.4, 0, 0.43333334, 1, 0, 0.4, 0, 0.7, 1, 0, 0.3, 0, 1, 1, 0, 0.5, 0, 1.1, 1, 0, 0.3, -0.3, 1.2333333, 1, 0, 0.3, -0.3, 1.3333334, 1, 0, 0.3, -0.3)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.16666669, 1, 0.300706, 0, 0, 0.953717, 0.4, 1, 0.300706, 0, 0, 0.953717, 0.75, 1, 0.173648, 0, 0, 0.984808, 1.0333333, 1, 0.130526, 0, 0, 0.991445, 1.1666666, 1, 0.043619, 0, 0, 0.999048, 1.2666668, 1, 0, 0, 0, 1, 1.3333334, 1, 0, 0, 0, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/Slide")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.033333335, 1, 0, 0, 0, 0.06666667, 1, 0, 0, 0.3, 1, 1, 0, 0, 0.3, 1.0333333, 1, 0, 0, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/Magasine")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.13333333, 1, 0, 0, 0, 0.23333333, 1, 0, -0.2, 0.07, 0.33333337, 1, 0, -0.25, 0.1, 0.76666665, 1, 0, -0.25, 0.1, 0.8333333, 1, 0, -0.2, 0.07, 0.8999999, 1, 0, 0, 0, 1.0666666, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8m2p"]
+_data = {
+&"RESET": SubResource("Animation_ad4b2"),
+&"bash": SubResource("Animation_vcotk"),
+&"draw": SubResource("Animation_1ceon"),
+&"fire": SubResource("Animation_mnbx6"),
+&"holster": SubResource("Animation_1bkai"),
+&"idle": SubResource("Animation_fcaxq"),
+&"reload": SubResource("Animation_d8m2p")
+}
+
+[node name="BasicPistol" type="Node3D" unique_id=1010158036]
+
+[node name="Chassis" type="Node3D" parent="." unique_id=986034379]
+
+[node name="BarrelMesh" type="MeshInstance3D" parent="Chassis" unique_id=1896554193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, -2.9802322e-08, 0)
+mesh = SubResource("BoxMesh_tls2x")
+
+[node name="HandleMesh" type="MeshInstance3D" parent="Chassis/BarrelMesh" unique_id=1288415449]
+transform = Transform3D(1, 0, 0, 0, 0.3420201, -0.93969256, 0, 0.93969256, 0.3420201, 0, -0.20603076, 0.265798)
+mesh = SubResource("BoxMesh_vcotk")
+
+[node name="Slide" type="Node3D" parent="Chassis" unique_id=1764022371]
+
+[node name="SlideMesh" type="MeshInstance3D" parent="Chassis/Slide" unique_id=1409492560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.04252428, 0.049999982)
+mesh = SubResource("BoxMesh_dl6s7")
+
+[node name="Magasine" type="Node3D" parent="Chassis" unique_id=1135669866]
+
+[node name="MagMesh" type="MeshInstance3D" parent="Chassis/Magasine" unique_id=492171151]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, -7.450581e-09, -0.26579797, 0.29396927)
+mesh = SubResource("BoxMesh_slcoe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=894164980]
+libraries/ = SubResource("AnimationLibrary_d8m2p")

@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dc5gkrnmc8fn4"]
+
+[ext_resource type="Script" uid="uid://cxdf3a3svgply" path="res://Source/Animation/PlayerModelAnimator.cs" id="1_voayu"]
+[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://Asset/Material/PersonalBubble.tres" id="2_jp5x8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tls2x"]
+radius = 0.25
+height = 0.5
+radial_segments = 8
+rings = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_slcoe"]
+size = Vector3(0.1, 0.8, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dl6s7"]
+size = Vector3(0.5, 0.5, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1jmw7"]
+size = Vector3(0.2, 0.1, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_40mn2"]
+size = Vector3(0.2, 0.8, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tls2x"]
+size = Vector3(0.6, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tls2x"]
+size = Vector3(1, 0.2, 1)
+
+[node name="PlayerBody" type="Node3D" unique_id=103543878 node_paths=PackedStringArray("Head", "Torso", "Hip", "LeftArm", "RightArm", "LeftLeg", "RightLeg", "LeftFoot", "RightFoot")]
+script = ExtResource("1_voayu")
+Head = NodePath("Head")
+Torso = NodePath("Torso")
+Hip = NodePath("Hip")
+LeftArm = NodePath("Torso/LeftArm")
+RightArm = NodePath("Torso/RightArm")
+LeftLeg = NodePath("Hip/LeftLeg")
+RightLeg = NodePath("Hip/RightLeg")
+LeftFoot = NodePath("Hip/LeftLeg/LeftFoot")
+RightFoot = NodePath("Hip/RightLeg/RightFoot")
+
+[node name="Head" type="Node3D" parent="." unique_id=818015069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Head" unique_id=192630711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("2_jp5x8")
+mesh = SubResource("SphereMesh_tls2x")
+
+[node name="Torso" type="Node3D" parent="." unique_id=1547054922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="RightArm" type="Node3D" parent="Torso" unique_id=1799214693]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.4, 0.29999995, 0)
+
+[node name="RightHandGrip" type="Marker3D" parent="Torso/RightArm" unique_id=1725830821]
+transform = Transform3D(-1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1, 0, 3.934025e-08, -0.9)
+
+[node name="ArmMesh" type="MeshInstance3D" parent="Torso/RightArm" unique_id=584392721]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.9802322e-08, 0, -0.4)
+mesh = SubResource("BoxMesh_slcoe")
+
+[node name="LeftArm" type="Node3D" parent="Torso" unique_id=1248985149]
+transform = Transform3D(-1, 0, -2.9802322e-08, 2.9802322e-08, -4.371139e-08, -1, -1.3027009e-15, -1, 4.371139e-08, -0.4, 0.29999995, 0)
+
+[node name="LeftHandGrip" type="Marker3D" parent="Torso/LeftArm" unique_id=1710217575]
+transform = Transform3D(1, 0, -5.6942864e-23, 0, 1, 0, -5.6942864e-23, 0, 1, -2.9802322e-08, 3.934025e-08, 0.9)
+
+[node name="ArmMesh" type="MeshInstance3D" parent="Torso/LeftArm" unique_id=1151085992]
+transform = Transform3D(1, 2.9802322e-08, 2.9802322e-08, -2.9802322e-08, -4.371139e-08, 1, 2.9802322e-08, -1, -4.371139e-08, 2.9802322e-08, 0, 0.4)
+mesh = SubResource("BoxMesh_slcoe")
+
+[node name="TorsoMesh" type="MeshInstance3D" parent="Torso" unique_id=898506061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15000007, 0)
+material_override = ExtResource("2_jp5x8")
+mesh = SubResource("BoxMesh_dl6s7")
+
+[node name="Hip" type="Node3D" parent="." unique_id=654360407]
+
+[node name="LeftLeg" type="Node3D" parent="Hip" unique_id=1139783999]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.2, -0.1, 0)
+
+[node name="LeftFoot" type="Node3D" parent="Hip/LeftLeg" unique_id=1297041071]
+transform = Transform3D(-1, 1.5285484e-14, 8.742278e-08, 0, 1, -1.7484555e-07, -8.742278e-08, -1.7484555e-07, -1, 0, -0.9, 0)
+
+[node name="LeftFootCast" type="RayCast3D" parent="Hip/LeftLeg/LeftFoot" unique_id=1960594652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7484552e-08)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="FootMesh" type="MeshInstance3D" parent="Hip/LeftLeg/LeftFoot" unique_id=211002449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("BoxMesh_1jmw7")
+
+[node name="LegMesh" type="MeshInstance3D" parent="Hip/LeftLeg" unique_id=1345744721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+material_override = ExtResource("2_jp5x8")
+mesh = SubResource("BoxMesh_40mn2")
+
+[node name="RightLeg" type="Node3D" parent="Hip" unique_id=1018680324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.1, 0)
+
+[node name="RightFoot" type="Node3D" parent="Hip/RightLeg" unique_id=699798790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+
+[node name="RightFootCast" type="RayCast3D" parent="Hip/RightLeg/RightFoot" unique_id=2107316101]
+transform = Transform3D(1, 0, 0, 0, 1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0, 0, -1.7484552e-08)
+target_position = Vector3(0, -0.2, 0)
+
+[node name="FootMesh" type="MeshInstance3D" parent="Hip/RightLeg/RightFoot" unique_id=859284326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("BoxMesh_1jmw7")
+
+[node name="LegMesh" type="MeshInstance3D" parent="Hip/RightLeg" unique_id=998139767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+material_override = ExtResource("2_jp5x8")
+mesh = SubResource("BoxMesh_40mn2")
+
+[node name="HipMesh" type="MeshInstance3D" parent="Hip" unique_id=206082451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 0.050000004, -1.4901161e-08)
+mesh = SubResource("BoxMesh_tls2x")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2137284052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=14125189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1920929e-07, 0)
+shape = SubResource("BoxShape3D_tls2x")

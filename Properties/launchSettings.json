@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "EXVAG": {
+      "commandName": "Project"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Crick\\Desktop\\Judah\\programs\\godot\\4.7.0\\GD#v4.7.0.exe",
+      "commandLineArgs": "--path . --verbose",
+      "workingDirectory": "."
+    }
+  }
+}

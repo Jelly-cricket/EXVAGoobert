@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://w0pgcmu1hm0v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tls2x"]
+size = Vector3(0.5, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0lbno"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="Animation" id="Animation_n1bcq"]
+resource_name = "RESET"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis/LeftFang")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.2, 0, -0.6)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis/RightFang")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.20000002, 0, -0.6)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/LeftFang")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/RightFang")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chassis")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/5/type = "position_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chassis")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ogi2v"]
+resource_name = "bash"
+length = 0.76666665
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.2, 1, 0, -0.1, 0.3, 0.33333334, 1, 0, 0.2, -0.9, 0.56666666, 1, 0, 0, 0, 0.73333335, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.16666667, 1, -0.130526, 0, 0, 0.991445, 0.3, 1, 0.258819, 0, 0, 0.965926, 0.46666667, 1, 0, 0, 0, 1, 0.73333335, 1, 0, 0, 0, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/LeftFang")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.2, 0, -0.6)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/RightFang")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.20000002, 0, -0.6)
+
+[sub_resource type="Animation" id="Animation_1keyv"]
+resource_name = "draw"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.2, 0.4, 0.099999994, 1, 0, 0.1, 0, 0.3, 1, 0, 0.1, 0, 0.40000004, 1, 0, 0.1, 0.05, 0.53333336, 1, 0, 0, 0, 0.70000005, 1, 0, 0, 0, 0.8000001, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis/LeftFang")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.2, 0, 0, 0.3, 1, -0.2, 0, 0, 0.36666667, 1, -0.2, 0, -0.6)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/RightFang")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.2, 0, 0, 0.3, 1, 0.2, 0, 0, 0.36666667, 1, 0.2, 0, -0.6)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.258819, 0, 0, 0.965926, 0.16666667, 1, -0.130526, 0, 0, 0.991445, 0.33333334, 1, 0.043619, 0, 0, 0.999048, 0.43333334, 1, 0.043619, 0, 0, 0.999048, 0.6666667, 1, 0, 0, 0, 1, 0.8000001, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_0lbno"]
+resource_name = "fire"
+length = 1.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.06666668, 1, 0, 0, 0.3, 0.26666668, 1, 0, 0, 0.3, 0.73333335, 1, 0, 0, 0, 1.1333333, 1, 0, 0, 0, 1.2, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0.130526, 0, 0, 0.991445, 0.8, 1, -0.043619, 0, 0, 0.999048, 0.96666664, 1, 0, 0, 0, 1, 1.1666666, 1, 0, 0, 0, 1, 1.2, 1, 0, 0, 0, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/LeftFang")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.2, 0, -0.6, 0.06666667, 1, -0.3, 0, -0.6, 0.16666667, 1, -0.3, 0, -0.6, 0.33333334, 1, -0.2, 0, -0.6)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/LeftFang")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.06666667, 1, 0, 0.130526, 0, 0.991445, 0.16666667, 1, 0, 0.130526, 0, 0.991445, 0.33333334, 1, 0, 0, 0, 1)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chassis/RightFang")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.20000002, 0, -0.6, 0.06666667, 1, 0.3, 0, -0.6, 0.16666667, 1, 0.3, 0, -0.6, 0.33333334, 1, 0.20000002, 0, -0.6)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chassis/RightFang")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.06666667, 1, 0, -0.130526, 0, 0.991445, 0.16666667, 1, 0, -0.130526, 0, 0.991445, 0.33333334, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_mgrlq"]
+resource_name = "holster"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.16666667, 1, 0, -0.1, 0, 0.33333334, 1, 0, 0.3, 0, 0.43333337, 1, 0, -0.2, 0, 0.6, 1, 0, -0.2, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.13333334, 1, -0.130526, 0, 0, 0.991445, 0.26666668, 1, -0.258819, 0, 0, 0.965926, 0.43333337, 1, -0.382683, 0, 0, 0.92388, 0.6, 1, -0.382683, 0, 0, 0.92388)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/LeftFang")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.2, 0, -0.6, 0.2, 1, -0.2, 0, -0.6, 0.26666668, 1, -0.2, 0, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/RightFang")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.20000002, 0, -0.6, 0.2, 1, 0.20000002, 0, -0.6, 0.26666668, 1, 0.2, 0, 0)
+
+[sub_resource type="Animation" id="Animation_3vqnc"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 2.0333333, 1, 0, 0.08, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(1, 1, 0, -0.043619, 0, 0.999048, 3, 1, 0, 0.043619, 0, 0.999048)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis/LeftFang")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.2, 0, -0.6)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis/RightFang")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.20000002, 0, -0.6)
+
+[sub_resource type="Animation" id="Animation_m0iwo"]
+resource_name = "reload"
+length = 1.2333333
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chassis/RightFang")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.16666667, 1, 0.20000002, 0, -0.6, 0.26666668, 1, 0.2, 0.2, -0.6, 0.46666667, 1, -0.2, 0.2, -0.6, 0.6666667, 1, -0.2, -0.2, -0.6, 0.8666667, 1, 0.2, -0.2, -0.6, 0.9666667, 1, 0.2, 0, -0.6, 1.2, 1, 0.2, 0, -0.6)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chassis/LeftFang")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.16666667, 1, -0.2, 0, -0.6, 0.26666668, 1, -0.2, -0.2, -0.6, 0.46666667, 1, 0.2, -0.2, -0.6, 0.6666667, 1, 0.2, 0.2, -0.6, 0.8666667, 1, -0.2, 0.2, -0.6, 0.9666667, 1, -0.2, 0, -0.6, 1.2, 1, -0.2, 0, -0.6)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chassis")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.06666667, 1, 0, 0, 0, 0.26666668, 1, 0, -0.1, 0, 0.43333334, 1, 0, -0.2, 0, 0.7, 1, 0, -0.1, 0, 0.8333333, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1.2, 1, 0, 0, 0)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chassis")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.099999994, 1, 0, 0, 0, 1, 0.3, 1, -0.382683, 0, 0, 0.92388, 0.6, 1, -0.173648, 0, 0, 0.984808, 1, 1, 0, 0, 0, 1, 1.2, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0iwo"]
+_data = {
+&"RESET": SubResource("Animation_n1bcq"),
+&"bash": SubResource("Animation_ogi2v"),
+&"draw": SubResource("Animation_1keyv"),
+&"fire": SubResource("Animation_0lbno"),
+&"holster": SubResource("Animation_mgrlq"),
+&"idle": SubResource("Animation_3vqnc"),
+&"reload": SubResource("Animation_m0iwo")
+}
+
+[node name="JasterBlaster" type="Node3D" unique_id=1517454770]
+
+[node name="Chassis" type="MeshInstance3D" parent="." unique_id=1212307626]
+mesh = SubResource("BoxMesh_tls2x")
+
+[node name="LeftFang" type="MeshInstance3D" parent="Chassis" unique_id=2009561593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.6)
+mesh = SubResource("BoxMesh_0lbno")
+
+[node name="RightFang" type="MeshInstance3D" parent="Chassis" unique_id=1968521166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20000002, 0, -0.6)
+mesh = SubResource("BoxMesh_0lbno")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1455093146]
+libraries/ = SubResource("AnimationLibrary_m0iwo")

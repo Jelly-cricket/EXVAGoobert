@@ -5,15 +5,15 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Source\Definition\" />
-    <Folder Include="Source\Action\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Source\Modulator\AdditiveMod.cs.uid" />
     <None Include="Source\Modulator\BaseMod.cs.uid" />
     <None Include="Source\Modulator\CompoundMod.cs.uid" />
     <None Include="Source\Modulator\DivisiveMod.cs.uid" />
     <None Include="Source\Modulator\MultiplicativeMod.cs.uid" />
     <None Include="Source\Modulator\SimpleMod.cs.uid" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source\Component\" />
+    <Folder Include="Source\RunItem\" />
   </ItemGroup>
 </Project>
