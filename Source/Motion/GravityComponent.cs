@@ -21,6 +21,8 @@ public partial class GravityComponent : BaseComponent
 	private bool _wasOnFloor;
 	private Vector3 _gravity;
 	private Vector3 _lastFallingVelocity;
+
+	[Signal] public delegate void LandedEventHandler(Vector3 vel);
 	public override void _Ready()
 	{
 		_gravity = Body.GetGravity();
@@ -46,17 +48,21 @@ public partial class GravityComponent : BaseComponent
 	}
 	public void TryFallDamage()
 	{
-		if (Body.IsOnFloor() && !_wasOnFloor && _lastFallingVelocity.Y < FallDamageThreshold) // if you are on the floor, were not the floor for the previous check, and passed the fall damage threshold
+		if (Body.IsOnFloor() && !_wasOnFloor) // if you are on the floor and were not the floor for the previous check
 		{
-			float referenceVelocity = FallDamageThreshold - _lastFallingVelocity.Y;
-			int iterationTarget = (int)referenceVelocity;
-			float computedDamage = FallDamageBaseLine;
-			for (int i = 0; i < iterationTarget; i++)
+			if (_lastFallingVelocity.Y < FallDamageThreshold)
 			{
-				computedDamage *= FallDamageMeterMultiplication;
-				computedDamage += FallDamageMeterAddition;
+				float referenceVelocity = FallDamageThreshold - _lastFallingVelocity.Y;
+				int iterationTarget = (int)referenceVelocity;
+				float computedDamage = FallDamageBaseLine;
+				for (int i = 0; i < iterationTarget; i++)
+				{
+					computedDamage *= FallDamageMeterMultiplication;
+					computedDamage += FallDamageMeterAddition;
+				}
+				FallDamageReceiver.DrainAmount(computedDamage, true);
 			}
-			FallDamageReceiver.DrainAmount(computedDamage, true);
+			EmitSignal(SignalName.Landed, _lastFallingVelocity);
 		}
 	}
 }

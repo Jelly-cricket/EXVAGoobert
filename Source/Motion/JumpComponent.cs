@@ -37,14 +37,8 @@ public partial class JumpComponent : BaseComponent
 		RefreshCoyote();
 		TryJump();
 	}
-	private void OnBouncePressed()
-	{
-		QueueJump();
-	}
-	private void QueueJump()
-	{
-		_jumpBufferTimer = JumpBufferDuration;
-	}
+	private void OnBouncePressed() => QueueJump();
+	private void QueueJump() => _jumpBufferTimer = JumpBufferDuration;
 	private void TryJump()
 	{
 		if (_jumpCooldownTimer > 0)
