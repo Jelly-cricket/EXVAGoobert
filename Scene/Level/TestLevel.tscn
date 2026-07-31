@@ -51,7 +51,7 @@ transform = Transform3D(11, 0, 0, 0, 1, 0, 0, 0, 11, -11, -0.5, 11)
 transform = Transform3D(0.8660254, 0, -2.75, 0, 1, 0, 0.5, 0, 4.7631397, -7, 0.5, -3)
 
 [node name="Block4" parent="." unique_id=92431904 instance=ExtResource("2_ql5eh")]
-transform = Transform3D(0.51961523, 0, -0.84474415, 0, 3, 0, 0.3, 0, 1.4631398, 6, 1.5, -4)
+transform = Transform3D(0.51961523, 0, -0.84474415, 0, 3, 0, 0.3, 0, 1.4631398, 0.015588284, 1.5, -7.04224)
 
 [node name="Block2" parent="." unique_id=665285834 instance=ExtResource("2_ql5eh")]
 transform = Transform3D(0.8660254, 0, -2.75, 0, 2, 0, 0.5, 0, 4.7631397, -9, 1, -4)
@@ -61,3 +61,9 @@ transform = Transform3D(2.6562958, 0, 2.066042, 0, 2.7499998, 0, -0.7117523, 0, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=116862792]
 environment = SubResource("Environment_tls2x")
+
+[node name="Block5" parent="." unique_id=1601040726 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(6.2526245, -0.9789846, 0, 6.2526245, 0.9789846, 0, 0, 0, 14.260002, 13.800718, 2.4836848, 6.29266)
+
+[node name="Block6" parent="." unique_id=1969012463 instance=ExtResource("2_ql5eh")]
+transform = Transform3D(4.421273, -1.1990063, 0, 7.65787, 0.6922466, 0, 0, 0, 14.260001, 19.19698, 9.494772, 6.2926598)

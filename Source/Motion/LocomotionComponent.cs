@@ -72,8 +72,6 @@ public partial class LocomotionComponent : BaseComponent
 		Vector3 vel = Body.Velocity;
 		Vector3 horizontal = new(vel.X, 0f, vel.Z);
 
-
-
 		if (Body.IsOnFloor())
 		{
 			horizontal = FrictionApplied(horizontal, delta);

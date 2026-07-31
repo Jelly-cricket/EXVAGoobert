@@ -1,6 +1,40 @@
 [gd_scene format=3 uid="uid://jqyiprmc860u"]
 
 [ext_resource type="Script" uid="uid://bv6w407tlrjgp" path="res://GUI/StatTrackerBar.gd" id="1_5xrrb"]
+[ext_resource type="Script" uid="uid://dhyccfxghdxgs" path="res://GUI/DeltaLabel.gd" id="2_4rb16"]
 
-[node name="StatTrackerBar" type="ProgressBar" unique_id=1470270898]
+[node name="StatTrackerBar" type="ProgressBar" unique_id=1470270898 node_paths=PackedStringArray("DeltaDisplay", "AmountDisplay")]
+anchors_preset = -1
+anchor_right = 0.033
+anchor_bottom = 0.030000001
+offset_right = -55.36
+offset_bottom = 15.599998
+show_percentage = false
 script = ExtResource("1_5xrrb")
+DeltaDisplay = NodePath("DeltaLabel")
+AmountDisplay = NodePath("AmountLabel")
+
+[node name="DeltaLabel" type="Label" parent="." unique_id=1244223627]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_right = 56.0
+grow_horizontal = 2
+text = "+000"
+horizontal_alignment = 2
+script = ExtResource("2_4rb16")
+
+[node name="AmountLabel" type="Label" parent="." unique_id=714501854]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 56.0
+offset_bottom = -24.0
+grow_horizontal = 2
+text = "10000"
+horizontal_alignment = 2

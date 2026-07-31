@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://jqyiprmc860u"]
+
+[ext_resource type="Script" uid="uid://bv6w407tlrjgp" path="res://GUI/StatTrackerBar.gd" id="1_5xrrb"]
+[ext_resource type="Script" uid="uid://dhyccfxghdxgs" path="res://GUI/DeltaLabel.gd" id="2_4rb16"]
+
+[node name="StatTrackerBar" type="ProgressBar" unique_id=1470270898 node_paths=PackedStringArray("DeltaDisplay")]
+anchors_preset = -1
+anchor_right = 0.002
+anchor_bottom = 0.025
+offset_right = -3.8400002
+offset_bottom = -27.0
+script = ExtResource("1_5xrrb")
+DeltaDisplay = NodePath("DeltaLabel")
+
+[node name="DeltaLabel" type="Label" parent="." unique_id=1244223627]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 39.000004
+grow_horizontal = 2
+text = "+000"
+horizontal_alignment = 2
+script = ExtResource("2_4rb16")

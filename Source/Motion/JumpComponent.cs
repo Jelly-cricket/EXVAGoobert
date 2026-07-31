@@ -93,7 +93,7 @@ public partial class JumpComponent : BaseComponent
 
 		Vector3 horizontal = new(Body.Velocity.X, 0, Body.Velocity.Z);
 
-		if (horizontal.LengthSquared() > 0)
+		if (horizontal.LengthSquared() > 0.1f)
 		{
 			horizontal = horizontal.Normalized() * SkipPower;
 		}

@@ -6,14 +6,14 @@ namespace EXVAG.Item;
 [GlobalClass] public partial class HandComponent : BaseComponent 
 {
 	[ExportCategory("References")]
-	[Export] public CharacterInputSignals InputSource { get; set; } 
-	[Export] public StatComponent AmmoSource { get; set; } 
-	[Export] public RayCast3D CharacterEyeline { get; set; } 
-	[Export] public Node3D CharacterHand { get; set; } 
+	[Export] public CharacterInputSignals InputSource { get; private set; } 
+	[Export] public StatComponent AmmoSource { get; private set; } 
+	[Export] public RayCast3D CharacterEyeline { get; private set; } 
+	[Export] public Node3D CharacterHand { get; private set; } 
 	[ExportCategory("Items")]
-	[Export] public ItemDefinition DefaultItem { get; set; } 
+	[Export] public ItemDefinition DefaultItem { get; private set; } 
 	[ExportCategory("Aiming")]
-	[Export] public float BaseDriftSpeed { get; set; } = 12; 
+	[Export] public float BaseDriftSpeed { get; private set; } = 12; 
 	[Signal] public delegate void ItemEquippedEventHandler(HoldableDefinition holdableItem); 
 	[Signal] public delegate void ItemUnequippedEventHandler(); 
 	[Signal] public delegate void ItemManuallyUnequippedEventHandler(); 
@@ -69,11 +69,11 @@ namespace EXVAG.Item;
 	public Vector3 GetEyeTargetPoint() 
 	{
 		Vector3 target; 
-		if (CharacterEyeline.IsColliding()) 
-		{
-			target = CharacterEyeline.GetCollisionPoint(); 
-		}
-		else 
+		//if (CharacterEyeline.IsColliding()) 
+		//{
+		//	target = CharacterEyeline.GetCollisionPoint(); 
+		//}
+		//else 
 		{
 			target = CharacterEyeline.GlobalPosition
 				+ CharacterEyeline.GlobalBasis.Z
@@ -120,7 +120,7 @@ namespace EXVAG.Item;
 	/// <param name="delta">
 	/// Delta time.
 	/// </param> 
-	public void UpdateAims(double delta) 
+	private void UpdateAims(double delta) 
 	{ 
 		UpdateDesiredAim();
 		UpdateDriftedAim(delta);
