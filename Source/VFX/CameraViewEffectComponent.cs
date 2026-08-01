@@ -1,10 +1,8 @@
 using Godot;
 using EXVAG.Common;
-
 using EXVAG.Motion;
-using System.Runtime.InteropServices.JavaScript;
-using System;
-namespace EXVAG.Source.VFX;
+
+namespace EXVAG.VFX;
 
 [GlobalClass]
 public partial class CameraViewEffectComponent : BaseComponent
@@ -26,7 +24,12 @@ public partial class CameraViewEffectComponent : BaseComponent
 		LifeStat.Drained += OnLifeDrained;
 		GravityHandler.Landed += OnPlayerLanded;
 	}
-
+	/// <summary>
+	/// Give damage a visual tick, changing the angle of roll.
+	/// </summary>
+	/// <param name="change">Amount of damage taken.</param>
+	/// <param name="previous">Amount of health before the damage was taken.</param>
+	/// <param name="current">The new health amount.</param>
 	public void OnLifeDrained(float change, float previous, float current)
 	{
 		float pole = (float)GD.RandRange(0, 1);
@@ -34,10 +37,12 @@ public partial class CameraViewEffectComponent : BaseComponent
 		{
 			pole = -1;
 		}
-
+		
 		if (Mathf.Abs(change) > DamageReactThreshold)
 		{
-			Camera.RotateObjectLocal(new Vector3(0, 0, 1), Mathf.Abs(change)
+			Camera.RotateObjectLocal(
+				new Vector3(0, 0, 1),
+				Mathf.Abs(change)
 				* pole
 				* DamageReactMultiplier
 				);

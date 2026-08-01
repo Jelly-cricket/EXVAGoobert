@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6awjbwfeven7"]
 
 [ext_resource type="Script" uid="uid://s622r44or0fi" path="res://Source/Common/EnhancedCharacterBody3D.cs" id="1_2djd1"]
-[ext_resource type="PackedScene" uid="uid://dc5gkrnmc8fn4" path="res://Scene/Character/PlayerBody.tscn" id="1_7hnkd"]
+[ext_resource type="PackedScene" uid="uid://dc5gkrnmc8fn4" path="res://Character/PlayerBody.tscn" id="1_7hnkd"]
 [ext_resource type="Script" uid="uid://vufxcnyttsor" path="res://Source/Input/PlayerInputSignals.cs" id="2_7hnkd"]
 [ext_resource type="Script" uid="uid://dbqv5sxnnnkp5" path="res://Source/Input/PlayerInputStream.cs" id="3_2djd1"]
 [ext_resource type="Script" uid="uid://cp0brjjnbry4o" path="res://Source/Input/CameraControllerComponent.cs" id="4_r4r1g"]
@@ -10,10 +10,10 @@
 [ext_resource type="Script" uid="uid://qiwn0olbfxel" path="res://Source/Motion/JumpComponent.cs" id="7_xjlt7"]
 [ext_resource type="Script" uid="uid://pp2wstd2ff82" path="res://Source/Common/StatComponent.cs" id="8_utr26"]
 [ext_resource type="Script" uid="uid://bpyyc7uciisc2" path="res://Source/Item/HandComponent.cs" id="9_u0a8y"]
-[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://GUI/fps.gd" id="10_5vcmg"]
+[ext_resource type="Script" uid="uid://dqgjxave2hayd" path="res://GUI/Game/Profiler.gd" id="10_5vcmg"]
 [ext_resource type="Script" uid="uid://ct0dvid60ouu0" path="res://Source/VFX/CameraViewEffectComponent.cs" id="11_2djd1"]
-[ext_resource type="PackedScene" uid="uid://jqyiprmc860u" path="res://GUI/StatTrackerBar.tscn" id="11_7mevl"]
-[ext_resource type="Script" uid="uid://crt6afch64c66" path="res://GUI/ReticleProjector.gd" id="12_6ld6d"]
+[ext_resource type="PackedScene" uid="uid://jqyiprmc860u" path="res://GUI/Game/StatTrackerBar.tscn" id="11_7mevl"]
+[ext_resource type="Script" uid="uid://crt6afch64c66" path="res://GUI/Game/ReticleProjector.gd" id="14_atf1u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tls2x"]
 
@@ -62,7 +62,7 @@ script = ExtResource("1_2djd1")
 [node name="BodyPivot" type="Node3D" parent="." unique_id=566329648]
 
 [node name="CameraFocus" type="Marker3D" parent="BodyPivot" unique_id=1623724240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 gizmo_extents = 2.0
 
 [node name="SelfieStick" type="SpringArm3D" parent="BodyPivot/CameraFocus" unique_id=1070161049]
@@ -73,6 +73,7 @@ margin = 0.05
 [node name="CameraHook" type="Marker3D" parent="BodyPivot/CameraFocus/SelfieStick" unique_id=786112509]
 
 [node name="Viewpoint" type="Camera3D" parent="BodyPivot/CameraFocus/SelfieStick/CameraHook" unique_id=457187770]
+physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8000001, 0)
 top_level = true
 fov = 85.0
@@ -94,7 +95,7 @@ FootReplantPredictionStrength = 0.4
 shape = SubResource("CapsuleShape3D_24okm")
 
 [node name="HandAnchor" type="Marker3D" parent="." unique_id=911748951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="MuzzleLine" type="RayCast3D" parent="HandAnchor" unique_id=1576189827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.450581e-09, 0)
@@ -147,7 +148,7 @@ LowerSnap = 15.0
 [node name="ManaStat" type="Node" parent="Components" unique_id=1348324231]
 script = ExtResource("8_utr26")
 StartAmount = 15.0
-MaxAmount = 150.0
+MaxAmount = 125.0
 RegenerateFromEmpty = true
 RegenDelay = 0.4
 RegenRate = 1.16
@@ -157,10 +158,12 @@ MinBounce = 0.0
 [node name="AmmoStat" type="Node" parent="Components" unique_id=1507178899]
 script = ExtResource("8_utr26")
 StartAmount = 60.0
+MaxAmount = 200.0
 RegenerateFromEmpty = true
 RegenDelay = 0.12
 RegenRate = 3.54
-LowerSnap = 5.0
+UpperSnap = 200.0
+LowerSnap = 15.0
 MinBounce = 0.0
 
 [node name="HandComponent" type="Node" parent="Components" unique_id=1607433039 node_paths=PackedStringArray("InputSource", "AmmoSource", "CharacterEyeline", "CharacterHand")]
@@ -230,7 +233,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-script = ExtResource("12_6ld6d")
+script = ExtResource("14_atf1u")
 AimRay = NodePath("../../BodyPivot/CameraFocus/EyeLine")
 MuzRay = NodePath("../../HandAnchor/MuzzleLine")
 Camera = NodePath("../../BodyPivot/CameraFocus/SelfieStick/CameraHook/Viewpoint")

@@ -24,5 +24,5 @@ func OnDrained(change : float, previous : float, new_amount : float) -> void :
 func ChangeTo(amount : float) -> void :
 	DeltaDisplay.QueueChange(amount - value)
 	value = amount
-	var amt = "%.1f" % amount
-	AmountDisplay.text = str(amt)
+	var formatter_amts = { "amt" : "%.1f" % amount, "mxamt" : "%.1f" % max_value}
+	AmountDisplay.text = "{amt} / {mxamt}".format(formatter_amts)
