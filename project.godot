@@ -11,24 +11,30 @@ config_version=5
 [application]
 
 config/name="EXVAGoobert"
-run/main_scene="uid://b01wbg5boc5as"
+run/main_scene="uid://cjqo50h0gfw4h"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-LevelManager="*uid://dwj7hvtb86o55"
+ClientLevelManager="*uid://ubrwjwuit6jp"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
+window/size/resizable=false
+window/size/borderless=true
 window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="EXVAGoobert"
+
+[global_group]
+
+Player=""
 
 [input]
 
@@ -150,6 +156,7 @@ look_right={
 
 [layer_names]
 
+2d_render/layer_20="Loading Screen"
 3d_physics/layer_1="Level"
 3d_physics/layer_2="Human"
 3d_physics/layer_3="Goob"

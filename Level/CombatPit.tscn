@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b8xypx02vv7do"]
+
+[ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://Structure/block.tscn" id="1_fchsl"]
+[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://Entity/Player.tscn" id="2_gmws5"]
+
+[node name="CombatPit" type="Node3D" unique_id=1361654725]
+
+[node name="Goobert" parent="." unique_id=1585261278 instance=ExtResource("2_gmws5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07711172, 1.4449995, 0.01869452)
+
+[node name="Block" parent="." unique_id=677878415 instance=ExtResource("1_fchsl")]
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, 0, 0, 0)
+
+[node name="Block9" parent="." unique_id=1296391752 instance=ExtResource("1_fchsl")]
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, -16, 0, 0)
+
+[node name="Block2" parent="." unique_id=1037067086 instance=ExtResource("1_fchsl")]
+transform = Transform3D(1, 0, 0, 0, 3.7260542, 0, 0, 0, 3.5707219, 1.5098569, 1.9464324, 0.35333848)
+
+[node name="Block3" parent="." unique_id=749257942 instance=ExtResource("1_fchsl")]
+transform = Transform3D(0.3, 0, 0, 0, 0.9821878, 0, 0, 0, 2.7, 0.8586172, 0.9633331, -2.221546)
+
+[node name="Block4" parent="." unique_id=1544297248 instance=ExtResource("1_fchsl")]
+transform = Transform3D(2.6060648, 0, 0, 0, 1, 0, 0, 0, 1, 3.327064, 0.9999999, 0.9220779)
+
+[node name="Block5" parent="." unique_id=1330153901 instance=ExtResource("1_fchsl")]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 2.8588004, -3.1589663, 1.3445799, 3.9001431)
+
+[node name="Block6" parent="." unique_id=1723093130 instance=ExtResource("1_fchsl")]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 2.8588004, -2.1589663, 2.4540405, 2.9001431)
+
+[node name="Block8" parent="." unique_id=1118413230 instance=ExtResource("1_fchsl")]
+transform = Transform3D(-3.8799286e-08, -0.22676712, -7.0230412, -2.0132084e-08, 0.4370338, -3.6440995, 1, -1.6320508e-15, -3.458523e-07, -5.2882934, 1.8030868, 0.9896326)
+
+[node name="Block7" parent="." unique_id=41248752 instance=ExtResource("1_fchsl")]
+transform = Transform3D(2.9, 0, 0, 0, 0.43200004, 0, 0, 0, 2.8588004, -0.40707934, 3.6102693, 1.9001431)

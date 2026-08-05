@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LevelFace" format=3 uid="uid://dyr0vj8tqp7y4"]
+
+[ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://Entity/Player.tscn" id="1_oibe3"]
+[ext_resource type="Texture2D" uid="uid://3jes55ecmg36" path="res://icon.svg" id="2_b74tr"]
+[ext_resource type="Script" uid="uid://csq8ywnrdj1w6" path="res://Source/Common/Flavor.cs" id="3_d2ty8"]
+[ext_resource type="Script" uid="uid://di7tcf8kx2hmv" path="res://GUI/MainMenu/LevelFace.gd" id="4_4soiy"]
+
+[sub_resource type="Resource" id="Resource_imcec"]
+script = ExtResource("3_d2ty8")
+Title = "The Void"
+Description = "Basic player character scene, not actually the void."
+Icon = ExtResource("2_b74tr")
+LooseTags = null
+metadata/_custom_type_script = "uid://csq8ywnrdj1w6"
+
+[resource]
+script = ExtResource("4_4soiy")
+Spice = SubResource("Resource_imcec")
+LevelScene = ExtResource("1_oibe3")
+metadata/_custom_type_script = "uid://di7tcf8kx2hmv"

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bwjxy0bbcptwu"]
+
+[ext_resource type="Script" uid="uid://bhhud7oyo4ha1" path="res://GUI/LoadingGUI.gd" id="1_qot2r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6n4ny"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+
+[node name="LoadingScreen" type="Panel" unique_id=21840576 node_paths=PackedStringArray("Progress", "TipLabel")]
+visibility_layer = 524288
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6n4ny")
+script = ExtResource("1_qot2r")
+Progress = NodePath("VBoxContainer/ProgressBar")
+TipLabel = NodePath("VBoxContainer/TipLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1323957727]
+visibility_layer = 524288
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -284.0
+offset_right = 256.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TipLabel" type="Label" parent="VBoxContainer" unique_id=1577817231]
+visibility_layer = 524288
+layout_mode = 2
+text = "did you know that this is placeholder text wawawawawawawawa"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=2020762137]
+visibility_layer = 524288
+layout_mode = 2

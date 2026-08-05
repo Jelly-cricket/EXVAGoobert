@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ubrwjwuit6jp"]
+
+[ext_resource type="Script" uid="uid://btejxjhqhv80h" path="res://Managers/ClientLevelManager.gd" id="1_mbslp"]
+[ext_resource type="PackedScene" uid="uid://bwjxy0bbcptwu" path="res://GUI/LoadingScreen.tscn" id="2_3gq8f"]
+
+[node name="ClientLevelManager" type="Node" unique_id=1336197674 node_paths=PackedStringArray("LevelRoot", "LoadingScreen")]
+script = ExtResource("1_mbslp")
+LevelRoot = NodePath("LevelRoot")
+LoadingScreen = NodePath("LoadingScreen")
+
+[node name="LevelRoot" type="Node3D" parent="." unique_id=94132492]
+
+[node name="LoadingScreen" parent="." unique_id=21840576 instance=ExtResource("2_3gq8f")]
+mouse_filter = 2

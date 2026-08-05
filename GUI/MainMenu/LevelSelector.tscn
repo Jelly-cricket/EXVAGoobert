@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://cxr60dx3yffvb"]
 
-[node name="LevelSelector" type="Control" unique_id=378423367]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://dmsq508c6tioy" path="res://GUI/MainMenu/LevelSelector.gd" id="1_i3tra"]
+[ext_resource type="Script" uid="uid://di7tcf8kx2hmv" path="res://GUI/MainMenu/LevelFace.gd" id="2_in8ph"]
+[ext_resource type="Resource" uid="uid://4u5swleu35p1" path="res://Level/LevelFaces/TestArena1.tres" id="3_f82yp"]
 
-[node name="OptionButton" type="OptionButton" parent="." unique_id=778401427]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 20.0
+[node name="LevelSelector" type="Control" unique_id=366913883 node_paths=PackedStringArray("DropDown", "ConfirmButton")]
+layout_mode = 3
+anchor_right = 0.23333333
+anchor_bottom = 0.02962963
+script = ExtResource("1_i3tra")
+Levels = Array[ExtResource("2_in8ph")]([ExtResource("3_f82yp")])
+DropDown = NodePath("DropDown")
+ConfirmButton = NodePath("ConfirmButton")
+metadata/_edit_use_anchors_ = true
+
+[node name="DropDown" type="OptionButton" parent="." unique_id=778401427]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.78571427
+anchor_bottom = 1.0
+accessibility_name = "Level selection dropdown"
+fit_to_longest_item = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfirmButton" type="Button" parent="." unique_id=423774197]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.78571427
+anchor_right = 0.78571427
+anchor_bottom = 1.0
+offset_right = 96.0
+accessibility_name = "Level selection confirmation"
+text = "Confirm"
+metadata/_edit_use_anchors_ = true

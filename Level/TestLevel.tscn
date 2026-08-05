@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b01wbg5boc5as"]
 
 [ext_resource type="PackedScene" uid="uid://b6awjbwfeven7" path="res://Entity/Player.tscn" id="1_1yrnh"]
-[ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://block.tscn" id="2_u18fy"]
+[ext_resource type="PackedScene" uid="uid://2v3n53pf6grd" path="res://Structure/block.tscn" id="2_u18fy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nvbbb"]
 
