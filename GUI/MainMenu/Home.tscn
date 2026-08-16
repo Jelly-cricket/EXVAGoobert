@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o7jtjuc4s8ry"]
 
-[ext_resource type="Texture2D" uid="uid://c0bd4ab1g1vuf" path="res://Asset/placeholder_title.png" id="1_bemjp"]
+[ext_resource type="Texture2D" uid="uid://c0bd4ab1g1vuf" path="res://Common/placeholder_title.png" id="1_bemjp"]
 [ext_resource type="PackedScene" uid="uid://cxr60dx3yffvb" path="res://GUI/MainMenu/LevelSelector.tscn" id="2_y4klf"]
 [ext_resource type="Script" uid="uid://di7tcf8kx2hmv" path="res://GUI/MainMenu/LevelFace.gd" id="3_fi0tk"]
 [ext_resource type="Resource" uid="uid://4u5swleu35p1" path="res://Level/LevelFaces/TestArena1.tres" id="4_43vel"]

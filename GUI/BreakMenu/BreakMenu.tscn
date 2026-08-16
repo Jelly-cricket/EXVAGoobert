@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://dvbifcr0uqem7"]
+
+[ext_resource type="Theme" uid="uid://bhwc7b171tybw" path="res://GUI/BreakMenu/ButtonTheme.tres" id="1_eq63v"]
+[ext_resource type="PackedScene" uid="uid://cfep2cnt37tea" path="res://GUI/BreakMenu/SidePanel.tscn" id="2_eq63v"]
+[ext_resource type="PackedScene" uid="uid://d0dj8yqxxuj2t" path="res://GUI/BreakMenu/PrimaryPanel.tscn" id="3_dhdpe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tls2x"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_xw6h4"]
+font_size = 32
+
+[node name="BreakMenu" type="Control" unique_id=2128349854]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitle" type="Label" parent="." unique_id=1293522998]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.007
+anchor_bottom = 0.089
+offset_top = 7.5600004
+offset_right = 704.0
+offset_bottom = -0.12000275
+text = "sssdfg"
+label_settings = SubResource("LabelSettings_tls2x")
+clip_text = true
+
+[node name="GameSubtitle" type="Label" parent="." unique_id=1024947177]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.089
+anchor_bottom = 0.178
+offset_top = -0.12000275
+offset_right = 704.0
+offset_bottom = -0.2400055
+text = "super super super duper fortnite game"
+label_settings = SubResource("LabelSettings_xw6h4")
+clip_text = true
+
+[node name="Resume" type="Button" parent="." unique_id=712878194]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.41500002
+anchor_bottom = 0.45900002
+offset_top = -0.2000122
+offset_right = 384.0
+offset_bottom = 0.27996826
+grow_vertical = 2
+theme = ExtResource("1_eq63v")
+text = "Resume"
+alignment = 0
+
+[node name="Options" type="Button" parent="." unique_id=1145407844]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.47400004
+anchor_bottom = 0.51900005
+offset_top = 0.079956055
+offset_right = 384.0
+offset_bottom = -0.52008057
+grow_vertical = 2
+theme = ExtResource("1_eq63v")
+text = "Options"
+alignment = 0
+
+[node name="Loadout" type="Button" parent="." unique_id=289224307]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.53300005
+anchor_bottom = 0.578
+offset_top = 0.35992432
+offset_right = 384.0
+offset_bottom = -0.23999023
+grow_vertical = 2
+theme = ExtResource("1_eq63v")
+text = "Loadout"
+alignment = 0
+
+[node name="Quit" type="Button" parent="." unique_id=2001093127]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.59300005
+anchor_bottom = 0.637
+offset_top = -0.44006348
+offset_right = 384.0
+offset_bottom = 0.039978027
+grow_vertical = 2
+theme = ExtResource("1_eq63v")
+text = "Quit"
+alignment = 0
+
+[node name="PrimaryPanel" parent="." unique_id=962312066 instance=ExtResource("3_dhdpe")]
+layout_mode = 1
+anchor_left = 0.23333333
+anchor_top = 0.17777778
+anchor_right = 0.6666667
+anchor_bottom = 0.8888889
+offset_bottom = 0.0
+
+[node name="SidePanel" parent="." unique_id=1968508807 instance=ExtResource("2_eq63v")]
+layout_mode = 1
+anchor_left = 0.70000005
+anchor_top = 0.119
+anchor_right = 0.96700007
+anchor_bottom = 0.88900006
+offset_left = -0.00012207031
+offset_top = -0.5200043
+offset_right = -0.6401367
+offset_bottom = -0.12005615

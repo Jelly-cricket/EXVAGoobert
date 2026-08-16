@@ -3,25 +3,33 @@ extends Node
 @export var LevelRoot : Node3D
 @export var LoadingScreen : LoadingGUI
 
-var loadProgress : Array = []
-var loading : bool = false
-var loadingScreenActive : bool = false
-var queuedLevel : StringName
+
+
+var _loading : bool = false
+var _loadingScreenActive : bool = false
+var _queuedLevel : StringName
+
+var LoadProgress : Array = []
+var RegisteredLevel : LevelFace
+
+func RequestLevelChange(level : LevelFace) -> void :
+	RegisteredLevel = level
+	_queueThreadedLoadSceneAsLevel(level.LevelScene.resource_path)
 
 func _ready() -> void:
-	EndLoading()
+	_endLoading()
 
-func UnloadCurrentLevel() -> void:
+func _unloadCurrentLevel() -> void:
 	var currentLevel = LevelRoot.get_children(false)
 	for childNode in currentLevel:
 		childNode.queue_free()
 
-func LoadSceneAsLevel(level : PackedScene) -> void: ## This function does NOT unload the currently loaded level.
+func _loadSceneAsLevel(level : PackedScene) -> void: ## This function does NOT unload the currently loaded level.
 	var instance = level.instantiate()
 	LevelRoot.add_child(instance)
 	
-func QueueThreadedLoadSceneAsLevel(levelPath : StringName) -> void:
-	if loading:
+func _queueThreadedLoadSceneAsLevel(levelPath : StringName) -> void: 
+	if _loading:
 		return
 	
 	if not FileAccess.file_exists(levelPath):
@@ -30,21 +38,20 @@ func QueueThreadedLoadSceneAsLevel(levelPath : StringName) -> void:
 	
 	ResourceLoader.load_threaded_request(levelPath)
 	
-	BeginLoading()
-	queuedLevel = levelPath
-	loading = true
+	_beginLoading()
+	_queuedLevel = levelPath
+	_loading = true
 
+func _changeLevelToPackedScene(level : PackedScene):
+	_unloadCurrentLevel()
+	_loadSceneAsLevel(level) 
 	
-func ChangeLevel(level : PackedScene):
-	UnloadCurrentLevel()
-	LoadSceneAsLevel(level)
-	
-func EvaluateLoad():
-	if not loading:
+func _evaluateLoad():
+	if not _loading:
 		return
 	var status = ResourceLoader.load_threaded_get_status(
-		queuedLevel,
-		loadProgress
+		_queuedLevel,
+		LoadProgress
 	)
 	
 	match status:
@@ -52,37 +59,37 @@ func EvaluateLoad():
 			pass
 		
 		ResourceLoader.THREAD_LOAD_LOADED:
-			loading = false
+			_loading = false
 			
 			var level : PackedScene = ResourceLoader.load_threaded_get(
-				queuedLevel
+				_queuedLevel
 			) as PackedScene
 			
 			if level == null:
-				push_error("loaded resource is not a PackedScene: " + queuedLevel)
-				EndLoading()
+				push_error("loaded resource is not a PackedScene: " + _queuedLevel)
+				_endLoading()
 				return
 				
-			ChangeLevel(level)
-			EndLoading()
+			_changeLevelToPackedScene(level)
+			_endLoading()
 			
 		ResourceLoader.THREAD_LOAD_FAILED:
-			loading = false
-			push_error("failed to load level: " + queuedLevel)
+			_loading = false
+			push_error("failed to load level: " + _queuedLevel)
 			
-func BeginLoading() -> void:
-	loadingScreenActive = true
+func _beginLoading() -> void: 
+	_loadingScreenActive = true
 	LoadingScreen.visible = true
 	LoadingScreen.UpdateProgress(0.0)
 
 
-func EndLoading() -> void:
-	loadingScreenActive = false
+func _endLoading() -> void:
+	_loadingScreenActive = false
 	LoadingScreen.visible = false
 	
 		
 
 func _process(_delta : float) -> void:
-	EvaluateLoad()
-	if loading:
-		LoadingScreen.UpdateProgress(loadProgress[0] * 100)
+	_evaluateLoad()
+	if _loading:
+		LoadingScreen.UpdateProgress(LoadProgress[0] * 100)

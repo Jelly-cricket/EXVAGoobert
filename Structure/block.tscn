@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2v3n53pf6grd"]
 
-[ext_resource type="Material" uid="uid://cejmg3qyfbhdj" path="res://Asset/Material/FireflyPlaceholder.tres" id="1_0idui"]
+[ext_resource type="Material" uid="uid://cejmg3qyfbhdj" path="res://Common/Material/FireflyPlaceholder.tres" id="1_0idui"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qncar"]
 

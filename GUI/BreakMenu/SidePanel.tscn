@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cfep2cnt37tea"]
+
+[node name="SidePanel" type="Control" unique_id=1968508807]
+layout_mode = 3
+anchor_right = 0.26700002
+anchor_bottom = 0.77000004
+offset_right = -0.64001465
+offset_bottom = 0.39996338
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=824590517]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+grow_horizontal = 0
+grow_vertical = 2

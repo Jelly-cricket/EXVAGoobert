@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cxdf3a3svgply" path="res://Source/Figure/PlayerModelAnimator.cs" id="1_iofuc"]
 [ext_resource type="Script" uid="uid://b1po32jdob5po" path="res://Source/Figure/Limb3D.cs" id="2_dkuc7"]
-[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://Asset/Material/PersonalBubble.tres" id="2_jp5x8"]
-[ext_resource type="Material" uid="uid://culjidx5c16l7" path="res://Asset/Material/PersonalBubbleGentle.tres" id="3_ehdfj"]
+[ext_resource type="Material" uid="uid://nv1g8wiy6u5d" path="res://Common/Material/PersonalBubble.tres" id="2_jp5x8"]
+[ext_resource type="Material" uid="uid://culjidx5c16l7" path="res://Common/Material/PersonalBubbleGentle.tres" id="3_ehdfj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_tls2x"]
 radius = 0.25
